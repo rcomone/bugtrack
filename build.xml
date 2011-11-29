@@ -76,6 +76,7 @@
   <target name="phpdoc">
      <exec executable="/usr/local/zend/bin/phpdoc">
         <arg line="--directory ${project.basedir}/library 
+                        --directory ${project.basedir}/application
                    --ignore ${project.basedir}/library/Zend 
                    --target ${project.basedir}/build/phpdoc" />
      
@@ -86,6 +87,7 @@
      <exec executable="/usr/local/zend/bin/docblox">
                 <arg line="project:run 
                    --directory ${project.basedir}/library 
+                   --directory ${project.basedir}/application
                    --ignore ${project.basedir}/library/Zend 
                    --target ${project.basedir}/build/docblox" />
      </exec>
