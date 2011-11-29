@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Bugtrack
  *  
@@ -51,7 +51,7 @@ abstract class Core_Model_Mapper_Abstract
     public function find($id)
     {
         $rowSet = $this->_getDbTable()->find($id);
-        if (!$row = $rowSet->current()){
+        if (!$row = $rowSet->current()) {
             throw new Zend_Db_Table_Exception('Enregistrement inexistant', 404);
         }
         return $this->_rowToObject($row);
