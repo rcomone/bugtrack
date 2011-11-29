@@ -9,4 +9,5 @@ Pre-requis
 * MySQL server 5.1 ou superieur
 * Apache 2.2.x avec mod_rewrite
 
-![Alt Zend Framework](http://www.atlantismultimedia.fr/wp-content/uploads/2011/02/ZendFramework-logo.png)
+![Alt Zend Framework](http://draworld.wifeo.com/images/fark_chuck_norris_dog.jpg)
+=======
