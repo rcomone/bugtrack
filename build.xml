@@ -25,6 +25,7 @@
            output="/dev/null" 
            dir="${project.basedir}">
 	     <arg line="--report=checkstyle
+	                      --tab-width=4
 	                --report-file=${project.basedir}/build/logs/checkstyle.xml
 	                --standard=Zend
 	                ${project.basedir}/application 
