@@ -14,7 +14,7 @@
  * 
  * @category       Bugtrack
  * @package        Core
- * @subpackage     controllers
+ * @subpackage     Controller
  * @desc           Error controller
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
@@ -22,7 +22,7 @@
  * @version        Release : 1.0 (2011-11-29)
  */
 class ErrorController extends Zend_Controller_Action
-{
+{ 
     public function errorAction()
     {
         $errorHandler = $this->_getParam('error_handler');
