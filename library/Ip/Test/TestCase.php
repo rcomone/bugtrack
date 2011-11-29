@@ -11,7 +11,7 @@ abstract class Ip_Test_TestCase extends PHPUnit_Framework_TestCase
         $this->application->bootstrap();
         $this->bootstrap =$this->application->getBootstrap();
         $fc = $this->bootstrap->getResource('FrontController');
-        $fc->setParam('bootstrap',$this->bootstrap );
+        $fc->setParam('bootstrap', $this->bootstrap);
         parent::setUp();
     }
 }
