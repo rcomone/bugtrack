@@ -1,8 +1,6 @@
 Bugtrack
 =====
 
-Prerequis
-=======
 
 Pre-requis
 ----------
