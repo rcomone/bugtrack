@@ -1,0 +1,7 @@
+.buildpath
+.project
+.zfproject.xml
+access.log
+error.log
+public/dummy.php
+application/Core/configs/application.ini

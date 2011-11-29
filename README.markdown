@@ -1,11 +1,20 @@
+<<<<<<< HEAD
+Bugtrack lol j'aime le pate
+=====
+
+=======
 Bugtrack
 =====
-test non fast forward
+test branche jb
+test branch jb
+>>>>>>> e60cba89547d8b0dcc862546d6019bf8aba89e78
 
-Pré-requis
+Pre-requis
 ----------
-* PHP 5.3 ou supérieur
-* Zend Framework 1.11 ou supérieur
-* MySQL server 5.1 ou supérieur
+* PHP 5.3 ou superieur
+* Zend Framework 1.11 ou superieur
+* MySQL server 5.1 ou superieur
 * Apache 2.2.x avec mod_rewrite
 
+![Alt Zend Framework](http://draworld.wifeo.com/images/fark_chuck_norris_dog.jpg)
+=======
