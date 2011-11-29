@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-Bugtrack lol j'aime le pate et zut
-=====
 
-=======
 Bugtrack
 =====
-test branche jb
-test branch jb
->>>>>>> e60cba89547d8b0dcc862546d6019bf8aba89e78
 
 Pre-requis
 ----------
