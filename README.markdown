@@ -1,8 +1,13 @@
 Bugtrack
 =====
 test non fast forward
+<<<<<<< HEAD
 
 Prerequis
+=======
+,,,
+Pre-requis
+>>>>>>> 32fc75bc7bdbd4184103064ee921c508c33f0028
 ----------
 * PHP 5.3 ou superieur
 * Zend Framework 1.11 ou superieur
