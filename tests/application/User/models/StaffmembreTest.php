@@ -1,7 +1,7 @@
 <?php 
 
 
-class User_Model_StaffmemberTest
+class User_Model_StaffmemberTest extends PHPUnit_Framework_Testcase
 {
     public function testGettersAndSettersAreWorkingFine()
     {
