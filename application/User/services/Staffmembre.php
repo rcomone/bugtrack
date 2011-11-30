@@ -1,21 +1,11 @@
 <?php 
 
-class User_Service_Staffmembre 
+class User_Service_Staffmembre
 {
-     /**
-      * Instanciate, populates a user object and creates it  at storage layer level
-      * @param array $params user properties
-      * @return User_Model_Staffmembre
-      */
-     public function create(array $params) 
-     {
-          // TODO - Implement
-         $user = new User_Model_Staffmembre();
-         // ... peupler l'objet utilisateur
-         // ... enregistrement / persistance
-         return $user;
-     }
-     
+     const STAFF_MEMBER_UPDATED = 'staffMemberUpdated';
+     const STAFF_MEMBER_UPDATE_FAILED = 'staffMemberUpdateFailed';
+     const STAFF_MEMBER_CREATED = 'staffMemberCreated';
+     const STAFF_MEMBER_CREATION_FAILED = 'staffMemberCreationFailed';
      /**
       * Retrieves all user entries at storage layer level
       * @return multitype:User_Model_Staffmembre
@@ -42,15 +32,32 @@ class User_Service_Staffmembre
      }
      
      /**
-      * Updates a user  entry at storage layer level
+      * Saves a user  entry at storage layer level (insert or update)
       * @param  User_Model_Staffmembre $user
       * @throws Exception if update process failed
       * @return  User_Model_Staffmembre $user
       */
-     public function update(User_Model_Staffmembre $user)
+     public function save(User_Model_Staffmembre $user)
      {
           // TODO - Implement
-          return $user;
+          if ((int) $user->getId() !== 0 ) {
+              try {
+                  // update
+                  return self::STAFF_MEMBER_UPDATED;
+              } catch (Exception $e) {
+                  return self::STAFF_MEMBER_UPDATE_FAILED;
+              }
+              
+          } else {
+              try {
+                  // insert
+                  return self::STAFF_MEMBER_CREATED;
+              } catch (Exception $e) {
+                  return self::STAFF_MEMBER_CREATION_FAILED;
+              }
+          }
+
+
      }
      
      /**

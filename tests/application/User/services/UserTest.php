@@ -2,13 +2,7 @@
 
 class UserTest extends PHPUnit_Framework_TestCase
 {
-   
-    public function testCreateMethodWithArrayGivenShouldReturnUserObject()
-    {
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->create(array());
-        $this->assertInstanceOf('User_Model_Staffmembre', $result);
-    }
+
     
     public function testGetlistMethodShouldReturnArrayOfUserObjects()
     {
@@ -34,14 +28,25 @@ class UserTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($result);
     }
     
-    public function testUpdateMethodShouldReturnOriginalUserObject() 
+    public function testSaveMethodWithNewUserGivenShouldReturnSuccessConstant() 
     {
         $user = new User_Model_Staffmembre();
         $user->setLogin('test')
                 ->setFirstname('test test');
         $userService = new User_Service_Staffmembre();
-        $result = $userService->update($user);
-        $this->assertSame($user, $result);
+        $result = $userService->save($user);
+        $this->assertEquals ($userService::STAFF_MEMBER_CREATED, $result);
+    }
+    
+    public function testSaveMethodWithExistingUserGivenShouldReturnSuccessConstant() 
+    {
+        $user = new User_Model_Staffmembre();
+        $user->setId(1)
+                ->setLogin('test')
+                ->setFirstname('test test');
+        $userService = new User_Service_Staffmembre();
+        $result = $userService->save($user);
+        $this->assertEquals ($userService::STAFF_MEMBER_UPDATED, $result);
     }
     
     public function testAuthenticateMethodWithRightCredentialsGivenShouldReturnTrue()

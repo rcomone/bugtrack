@@ -3,7 +3,11 @@
 
 class User_Model_Staffmembre
 {
-    
+    /**
+     * User's ref (formerly DB primary key)
+     * @var integer
+     */
+    private $_id;
     /**
      * User's firstname
      * @var string
@@ -34,6 +38,23 @@ class User_Model_Staffmembre
      * @var User_Model_Team
      */
     private $_team;
+	/**
+     * @return the $_id
+     */
+    public function getId ()
+    {
+        return $this->_id;
+    }
+
+	/**
+     * @param integer $_id
+     */
+    public function setId ($_id)
+    {
+        $this->_id = $_id;
+        return $this;
+    }
+
 	/**
      * @return the $_firstname
      */
