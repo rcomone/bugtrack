@@ -1,6 +1,6 @@
 <?php 
 
-class UserTest extends PHPUnit_Framework_TestCase
+class User_Service_StaffmemberTest extends PHPUnit_Framework_TestCase
 {
 
     

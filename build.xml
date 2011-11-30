@@ -51,8 +51,8 @@
   
   <target name="phpcpd">
      <exec executable="/usr/local/zend/bin/phpcpd">
-        <arg line="--min-lines 3
-                   --min-tokens 3
+        <arg line="--min-lines 5
+                   --min-tokens 5
                    --log-pmd ${project.basedir}/build/logs/pmd-cpd.xml
                    ${project.basedir}/application"/>
      </exec>
