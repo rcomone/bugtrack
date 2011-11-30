@@ -3,6 +3,12 @@
         <directory>./</directory>
    </testsuite>
    
+   <filter>
+        <blacklist>
+              <directory suffix=".php">/usr/local/zend/share</directory>    
+              <file>../application/Bootstrap.php</file>
+        </blacklist>
+   </filter>
    <logging>
       <log type="junit" target="../build/logs/phpunit.xml" />
       <log type="testdox-html" target="../build/logs/phpunit.html" />

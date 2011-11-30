@@ -97,7 +97,6 @@
   <target name="build" 
           description="Main build process"
           depends="clean,prepare,phpunit,phpcs,phpcb,phpmd,phpcpd,pdepend,phploc,phpdoc,docblox">
-    
   </target>
   
 
