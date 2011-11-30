@@ -1,7 +1,7 @@
 <?php 
 
 
-class User_Model_StaffMembre
+class User_Model_Staffmembre
 {
     
     /**
