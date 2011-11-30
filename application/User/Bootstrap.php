@@ -13,8 +13,8 @@
  * to license@zend.com so we can send you a copy immediately.
  * 
  * @category       Bugtrack
- * @package        Core
- * @desc           Core_Bootstrap
+ * @package        User
+ * @desc           User_Bootstrap
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
  * @license        http://framework.zend.com/new-bsd   New BSD License
