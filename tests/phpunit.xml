@@ -1,5 +1,5 @@
-<phunit bootstrap="bootstrap.php" >
-   <testsuite name="bugtrack">
+<phunit bootstrap="bootstrap.php" colors="true">
+  <testsuite name="bugtrack">
         <directory>./</directory>
    </testsuite>
    
