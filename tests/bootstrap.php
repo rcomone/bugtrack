@@ -19,6 +19,11 @@ set_include_path(implode(PATH_SEPARATOR, array(
 );
 
 require_once 'Zend/Application.php';
-$application = new Zend_Application('testing', APPLICATION_PATH . '/Core/configs/application.ini');
+
+$application = new Zend_Application(
+	'testing', 
+    APPLICATION_PATH . '/Core/configs/application.ini'
+);
+$application->bootstrap();
 
 Zend_Session::$_unitTestEnabled = true; 
