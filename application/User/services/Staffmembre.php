@@ -1,13 +1,7 @@
 <?php 
 
-class User_Service_StaffMembre 
+class User_Service_Staffmembre 
 {
-<<<<<<< HEAD
-     public function create(array $params) 
-     {
-          // TODO - Implement
-         $user = new User_Model_StaffMembre();
-=======
      /**
       * Instanciate, populates a user object and creates it  at storage layer level
       * @param array $params user properties
@@ -17,19 +11,15 @@ class User_Service_StaffMembre
      {
           // TODO - Implement
          $user = new User_Model_Staffmembre();
->>>>>>> jb
          // ... peupler l'objet utilisateur
          // ... enregistrement / persistance
          return $user;
      }
      
-<<<<<<< HEAD
-=======
      /**
       * Retrieves all user entries at storage layer level
       * @return multitype:User_Model_StaffMembre
       */
->>>>>>> jb
      public function getList()
      {
           // TODO - Implement
