@@ -4,8 +4,14 @@
        <index>
            <label>Home</label>
            <route>index</route>     
-           <controller>index</controller>  
-           <action>index</action>
        </index> 
+       <ProjectsList>
+           <label>Projects lists</label>
+           <route>ProjectsList</route>     
+       </ProjectsList>
+       <UsersList>
+           <label>Users list</label>
+           <route>UsersList</route>     
+       </UsersList>
    </main>
 </config>
