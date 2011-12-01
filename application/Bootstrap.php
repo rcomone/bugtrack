@@ -22,7 +22,7 @@
  */
 /**
  * @category       Bugtrack
- * @desc           Bootstrap
+ * @desc           Main Bootstrap
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
  * @license        http://framework.zend.com/new-bsd   New BSD License

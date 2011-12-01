@@ -14,11 +14,11 @@
  * 
  * @category       Bugtrack
  * @package        Project
- * @desc           Project_Bootstrap
- * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
+ * @desc              Project_Bootstrap
+ * @author           Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
- * @license        http://framework.zend.com/new-bsd   New BSD License
- * @version        Release : 1.0 (2011-11-29)
+ * @license          http://framework.zend.com/new-bsd   New BSD License
+ * @version         Release : 1.0 (2011-12-01)
  *
  */
 /**
@@ -28,7 +28,7 @@
  * @author           Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
  * @license          http://framework.zend.com/new-bsd   New BSD License
- * @version         Release : 1.0 (2011-11-29)
+ * @version         Release : 1.0 (2011-12-01)
  *
  */
 class Project_Bootstrap extends Zend_Application_Module_Bootstrap
