@@ -1,6 +1,6 @@
 /*  
 
-    Less+ by Jimmy RosÃ©n, http://www.angrycreative.se/projekt/less-framework
+    Less+ by Jimmy Rosén, http://www.angrycreative.se/projekt/less-framework
     Based on Less Framework 4 by Joni Korpi, http://lessframework.com
     
 */
@@ -31,12 +31,12 @@
 }
 
 .big, h4 {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 30px;
 }
 
 body {
-    font: 11px/16px Verdana, Arial, Helvetica, â€œTrebuchet MSâ€, Tahoma, Geneva, â€œLucida Sans Unicodeâ€, â€œLucida Grandeâ€, â€œMS Sans Serifâ€, sans-serif;
+    font: 11px/16px Verdana, Arial, Helvetica, “Trebuchet MS”, Tahoma, Geneva, “Lucida Sans Unicode”, “Lucida Grande”, “MS Sans Serif”, sans-serif;
 }
 
 .small, small {
