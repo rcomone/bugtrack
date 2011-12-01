@@ -14,28 +14,30 @@
  * 
  * @category       Bugtrack
  * @package        User
- * @desc           User_Bootstrap
- * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
+ * @subpackage  Controller
+ * @desc              User authentication controller
+ * @author           Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
- * @license        http://framework.zend.com/new-bsd   New BSD License
- * @version        Release : 1.0 (2011-11-29)
+ * @license          http://framework.zend.com/new-bsd   New BSD License
+ * @version         Release : 1.0 (2011-12-01)
  *
  */
 /**
  * @category       Bugtrack
  * @package        User
- * @desc              User_Bootstrap
+ * @subpackage  Controller
+ * @desc              User authentication controller
  * @author           Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
- * @license        http://framework.zend.com/new-bsd   New BSD License
- * @version        Release : 1.0 (2011-11-29)
+ * @license          http://framework.zend.com/new-bsd   New BSD License
+ * @version         Release : 1.0 (2011-12-01)
  *
  */
-class User_Bootstrap extends Zend_Application_Module_Bootstrap
+class User_AuthController extends Zend_Controller_Action
 {
-    protected function _initLoadModules()
+    
+    public function loginAction()
     {
-        $plugin = new User_Plugin_Auth();
-        Zend_Controller_Front::getInstance()->registerPlugin($plugin);
+        $this->view->loginForm = new User_Form_Login();
     }
 }

@@ -26,7 +26,8 @@
 	<?php echo $this->navigation()
 	                    ->breadcrumbs(Zend_Registry::get('navigation'))
 	                    ->setSeparator(' &rarr; ')
-	                    ->setMinDepth(0); ?>
+	                    ->setMinDepth(0)
+	                    ->setRenderInvisible(true); ?>
 </div>
 <div id="content">
 	<?php echo $this->layout()->content;?>

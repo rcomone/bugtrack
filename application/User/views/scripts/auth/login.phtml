@@ -1,0 +1,44 @@
+<?php 
+
+// Supprimer les decorateurs existants pour les redéfinir
+$this->loginForm->clearDecorators();
+
+// Redéfinition des décorateurs nécessaires
+
+$this->loginForm->login->setLabel('Identifiant')
+                                    ->setAttrib('class' , 'formField')
+                                    ->setDescription('Entrez votre nom')
+                                    ->setDecorators(array(
+                                            'ViewHelper',
+                                            array( 'Label', array( 'class' => 'formLabel')),
+                                            array('Description', array('class' => 'test')),
+                                            array( 'HtmlTag', array('tag' => 'p'))
+                                        )
+                                    );
+                                    
+$this->loginForm->password->setLabel('Mot de passe')
+                                    ->setAttrib('class' , 'formField')
+                                    ->setDecorators(array(
+                                            'ViewHelper',
+                                            array( 'Label', array( 'class' => 'formLabel')),
+                                            array( 'HtmlTag', array('tag' => 'p'))
+                                        )
+                                    );
+                                    
+$this->loginForm->submit->setLabel('Connexion')
+                                       ->setAttrib('class' , 'formBtn')
+                                        ->setDecorators(array(
+                                            'ViewHelper',
+                                            array( 'HtmlTag', array('tag' => 'p'))
+                                        )
+                                    );
+
+echo $this->loginForm->setDecorators(
+    array(
+        'FormElements',
+        'Form'
+    )
+);
+
+
+?>
