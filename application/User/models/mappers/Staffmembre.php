@@ -84,4 +84,23 @@ class User_Model_Mapper_Staffmembre
                    ->setLogin($row->usm_login);
            return $user;
     }
+    
+    public function getList()
+    {
+           $rowSet = $this->getDbTable()->fetchAll(); 
+           if ( 0 === count($rowSet) ) {
+               return false;
+           }
+           $users = array();
+           foreach ($rowSet as $row) {
+               $user = new User_Model_Staffmembre();
+               $user->setId($row->usm_id)
+                   ->setFirstname($row->usm_firstname)
+                   ->setLastname($row->usm_lastname)
+                   ->setEmail($row->usm_email)
+                   ->setLogin($row->usm_login);
+               $array[] = $user;
+           }
+           return $users;
+    }
 }
