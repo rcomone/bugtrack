@@ -30,6 +30,12 @@
 	                    ->setRenderInvisible(true); ?>
 </div>
 <div id="content">
+    <?php 
+    $userService = new User_Service_Staffmembre();
+    if ( $userService->hasIdentity()) : ?>
+        <a href="/User/auth/logout">D&eacute;connexion</a>
+    <?php endif;?>
+    
 	<?php echo $this->layout()->content;?>
 </div>
 <div id="bottom">

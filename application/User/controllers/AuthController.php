@@ -36,21 +36,24 @@
 class User_AuthController extends Zend_Controller_Action
 {
     
+    public function init()
+    {
+        $this->userService = new User_Service_Staffmembre();
+    }
+    
     public function loginAction()
     {
         $form = new User_Form_Login();
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($_POST)) {
-                $userService = new User_Service_Staffmembre();
-                $user = $userService->findByLogin($form->getValue('login'));
-                var_dump($user); exit;
+                
+                $user = $this->userService->findByLogin($form->getValue('login'));
                 if ( false ===  $user) {
                     $this->_helper->FlashMessenger('utilisateur  inconnu');
                 } else {
                     $user->setPassword($form->getValue('password'));
-                    if ($userService->authenticate($user)) {
-                        $this->_helper->FlashMessenger('Identification OK');
-                        // $this->_redirect('/index/index');
+                    if ($this->userService->authenticate($user)) {
+                        $this->_redirect('/index/index');
                     } else {
                         $this->_helper->FlashMessenger('Echec d\'identification');
                     }
@@ -59,5 +62,11 @@ class User_AuthController extends Zend_Controller_Action
         }
         $this->view->messages = $this->_helper->getHelper('FlashMessenger')->getMessages();
         $this->view->loginForm = $form;
+    }
+    
+    public function logoutAction()
+    {
+        $this->userService->logout();
+        $this->_redirect('/');
     }
 }

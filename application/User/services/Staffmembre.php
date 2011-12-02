@@ -89,8 +89,6 @@ class User_Service_Staffmembre
                   return self::STAFF_MEMBER_CREATION_FAILED;
               }
           }
-
-
      }
      
      /**
@@ -100,12 +98,26 @@ class User_Service_Staffmembre
       */
      public function authenticate(User_Model_Staffmembre $user)
      {
-             // TODO - Implement
-             if ('test' === $user->getLogin() && 'testtest' === $user->getPassword()) {
-                  return true;
-             } else {
-                 return false;
-             }
+            $authAdapter = new Zend_Auth_Adapter_DbTable();
+            $authAdapter->setTableName('user_staffmembre')
+                                ->setIdentityColumn('usm_login')
+                                ->setCredentialColumn('usm_password')
+                                ->setIdentity($user->getLogin())
+                                ->setCredential($user->getPassword());
+                                
+            $auth = Zend_Auth::getInstance();
+            $result = $auth->authenticate($authAdapter);
+            
+            switch ($result->getCode()) {
+                case Zend_Auth_Result::SUCCESS : 
+                    $identity = $authAdapter->getResultRowObject(null, 'usm_password');
+                    $auth->getStorage()->write($identity);
+                    return true;
+                    break;
+                default : 
+                    return false;
+            }
+            
      }
      
      /**
@@ -119,4 +131,24 @@ class User_Service_Staffmembre
           return $userMapper->findByLogin($login);
      }
      
+     /**
+      * @return boolean
+      */
+     public function logout()
+     {
+         Zend_Auth::getInstance()->clearIdentity();
+         // Comme il s'agit d'un intranet, nous pouvons supprimer complètement la session
+         if (!Zend_Session::isDestroyed()) {
+             Zend_Session::destroy();
+         }
+         return true;
+     }
+     
+     /**
+      * @return boolean
+      */
+     public function hasIdentity()
+     {
+         return Zend_Auth::getInstance()->hasIdentity();
+     }
 }
