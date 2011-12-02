@@ -29,10 +29,13 @@ CREATE TABLE `user_staffmembre` (
   `usm_email` varchar(150) NOT NULL,
   `usm_login` varchar(20) NOT NULL,
   `usm_password` char(42) NOT NULL,
+  `ut_id` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`usm_id`),
   UNIQUE KEY `usm_login_UNIQUE` (`usm_login`),
-  UNIQUE KEY `usm_email_UNIQUE` (`usm_email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `usm_email_UNIQUE` (`usm_email`),
+  KEY `FK_TEAM_ID` (`ut_id`),
+  CONSTRAINT `FK_TEAM_ID` FOREIGN KEY (`ut_id`) REFERENCES `user_team` (`ut_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,8 +44,33 @@ CREATE TABLE `user_staffmembre` (
 
 LOCK TABLES `user_staffmembre` WRITE;
 /*!40000 ALTER TABLE `user_staffmembre` DISABLE KEYS */;
-INSERT INTO `user_staffmembre` VALUES (1,'test','test','test','test','tset');
+INSERT INTO `user_staffmembre` VALUES (1,'test','test','test','test','testtest',1),(2,'test2','test2','test2','test2','testtest',1),(3,'test3','test3','test3','test3','testtest',2);
 /*!40000 ALTER TABLE `user_staffmembre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_team`
+--
+
+DROP TABLE IF EXISTS `user_team`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_team` (
+  `ut_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `ut_name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`ut_id`),
+  UNIQUE KEY `ut_name_UNIQUE` (`ut_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_team`
+--
+
+LOCK TABLES `user_team` WRITE;
+/*!40000 ALTER TABLE `user_team` DISABLE KEYS */;
+INSERT INTO `user_team` VALUES (1,'Team 1'),(2,'Team 2');
+/*!40000 ALTER TABLE `user_team` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +82,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-12-02 11:01:55
+-- Dump completed on 2011-12-02 15:41:00

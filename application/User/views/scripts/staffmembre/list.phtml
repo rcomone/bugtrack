@@ -1,2 +1,11 @@
-<?php  
-var_dump($this->staffmembres);
+<table>
+<?php  foreach ($this->staffmembres as $staffmembre) : ?>
+  <tr>
+      <td><?php echo $staffmembre->getLogin() ?></td>
+      <td><?php echo $staffmembre->getFirstname() ?></td>
+      <td><?php echo $staffmembre->getLastname() ?></td>
+      <td><?php echo $staffmembre->getEmail() ?></td>
+      <td><?php echo $staffmembre->getTeam()->getName() ?></td>
+  </tr>
+<?php endforeach;?>
+</table>

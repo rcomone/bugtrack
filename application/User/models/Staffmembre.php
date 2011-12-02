@@ -67,7 +67,7 @@ class User_Model_Staffmembre
     private $_password;
     /**
      * user's team
-     * @var multitype:User_Model_Team
+     * @var User_Model_Team
      */
     private $_team;
 	/**

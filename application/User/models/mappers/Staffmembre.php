@@ -57,11 +57,7 @@ class User_Model_Mapper_Staffmembre
            }
            $row = $rowSet->current();
            $user = new User_Model_Staffmembre();
-           $user->setId($row->usm_id)
-                   ->setFirstname($row->usm_firstname)
-                   ->setLastname($row->usm_lastname)
-                   ->setEmail($row->usm_email)
-                   ->setLogin($row->usm_login);
+           $user = $this->_rowToObject($row);
            return $user;
     }
     
@@ -76,12 +72,7 @@ class User_Model_Mapper_Staffmembre
                return false;
            }
            $row = $rowSet->current();
-           $user = new User_Model_Staffmembre();
-           $user->setId($row->usm_id)
-                   ->setFirstname($row->usm_firstname)
-                   ->setLastname($row->usm_lastname)
-                   ->setEmail($row->usm_email)
-                   ->setLogin($row->usm_login);
+           $user = $this->_rowToObject($row); 
            return $user;
     }
     
@@ -93,14 +84,25 @@ class User_Model_Mapper_Staffmembre
            }
            $users = array();
            foreach ($rowSet as $row) {
-               $user = new User_Model_Staffmembre();
-               $user->setId($row->usm_id)
+               $user = $this->_rowToObject($row);
+               $users[] = $user;
+           }
+           return $users;
+    }
+    
+    private function _rowToObject(Zend_Db_Table_Row $row)
+    {
+           $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');
+           $team = new User_Model_Team();
+           $team->setId($teamRow->ut_id)
+                     ->setName($teamRow->ut_name);
+           $user = new User_Model_Staffmembre();
+           $user->setId($row->usm_id)
                    ->setFirstname($row->usm_firstname)
                    ->setLastname($row->usm_lastname)
                    ->setEmail($row->usm_email)
-                   ->setLogin($row->usm_login);
-               $array[] = $user;
-           }
-           return $users;
+                   ->setLogin($row->usm_login)
+                   ->setTeam($team);
+           return $user;
     }
 }

@@ -41,7 +41,16 @@ class User_Model_DbTable_Staffmembre extends Zend_Db_Table_Abstract
     {
         $options = array(
             'name' => 'user_staffmembre',
-            'primary' => 'usm_id'
+            'primary' => 'usm_id',
+            'referenceMap' => array(
+                'Team' => array( 
+                        'columns' => array('ut_id'),
+                        'refTableClass' => 'User_Model_DbTable_Team',
+                        'refColumns' => array('ut_id'),
+                        'onDelete' => self::RESTRICT,
+                        'onUpdate' => self::CASCADE
+                )
+            )
         );
         
         parent::__construct($options);

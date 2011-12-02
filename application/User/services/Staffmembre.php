@@ -45,12 +45,8 @@ class User_Service_Staffmembre
       */
      public function getList()
      {
-          // TODO - Implement
-         return array(
-             new User_Model_Staffmembre(),
-             new User_Model_Staffmembre(),
-             new User_Model_Staffmembre()
-         );
+          $userMapper = new User_Model_Mapper_Staffmembre();
+          return $userMapper->getList();
      }
      
      /**
@@ -150,5 +146,11 @@ class User_Service_Staffmembre
      public function hasIdentity()
      {
          return Zend_Auth::getInstance()->hasIdentity();
+     }
+     
+     public function getTeamList()
+     {
+         $teamMapper = new User_Model_Mapper_Team();
+         return $teamMapper->getList();
      }
 }
