@@ -1,5 +1,11 @@
 <?php 
 
+foreach( $this->messages as $message) :
+?>
+   <p><?php echo $message ?></p>
+<?php
+endforeach;
+
 // Supprimer les decorateurs existants pour les redéfinir
 $this->loginForm->clearDecorators();
 
@@ -11,7 +17,8 @@ $this->loginForm->login->setLabel('Identifiant')
                                     ->setDecorators(array(
                                             'ViewHelper',
                                             array( 'Label', array( 'class' => 'formLabel')),
-                                            array('Description', array('class' => 'test')),
+                                           // array('Description', array('class' => 'test')),
+                                            'Errors',
                                             array( 'HtmlTag', array('tag' => 'p'))
                                         )
                                     );
@@ -21,6 +28,7 @@ $this->loginForm->password->setLabel('Mot de passe')
                                     ->setDecorators(array(
                                             'ViewHelper',
                                             array( 'Label', array( 'class' => 'formLabel')),
+                                             'Errors',
                                             array( 'HtmlTag', array('tag' => 'p'))
                                         )
                                     );

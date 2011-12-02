@@ -38,6 +38,26 @@ class User_AuthController extends Zend_Controller_Action
     
     public function loginAction()
     {
-        $this->view->loginForm = new User_Form_Login();
+        $form = new User_Form_Login();
+        if ($this->getRequest()->isPost()) {
+            if ($form->isValid($_POST)) {
+                $userService = new User_Service_Staffmembre();
+                $user = $userService->findByLogin($form->getValue('login'));
+                var_dump($user); exit;
+                if ( false ===  $user) {
+                    $this->_helper->FlashMessenger('utilisateur  inconnu');
+                } else {
+                    $user->setPassword($form->getValue('password'));
+                    if ($userService->authenticate($user)) {
+                        $this->_helper->FlashMessenger('Identification OK');
+                        // $this->_redirect('/index/index');
+                    } else {
+                        $this->_helper->FlashMessenger('Echec d\'identification');
+                    }
+                }
+            } 
+        }
+        $this->view->messages = $this->_helper->getHelper('FlashMessenger')->getMessages();
+        $this->view->loginForm = $form;
     }
 }

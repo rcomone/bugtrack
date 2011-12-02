@@ -101,7 +101,7 @@ class User_Service_Staffmembre
      public function authenticate(User_Model_Staffmembre $user)
      {
              // TODO - Implement
-             if ('test' === $user->getLogin() && 'test' === $user->getPassword()) {
+             if ('test' === $user->getLogin() && 'testtest' === $user->getPassword()) {
                   return true;
              } else {
                  return false;
@@ -115,14 +115,8 @@ class User_Service_Staffmembre
       */
      public function findByLogin($login)
      {
-          // TODO - Implement
-          if ($login === 'test') {
-             $user = new User_Model_Staffmembre();
-             $user->setLogin($login);
-             return $user;
-          } else {
-              return false;
-          }
+          $userMapper = new User_Model_Mapper_Staffmembre();
+          return $userMapper->findByLogin($login);
      }
      
 }
