@@ -16,34 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `project`
+-- Table structure for table `proj_issueStatus`
 --
 
-DROP TABLE IF EXISTS `project`;
+DROP TABLE IF EXISTS `proj_issueStatus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `project` (
-  `proj_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `proj_name` varchar(45) NOT NULL,
-  `proj_desc` text NOT NULL,
-  `proj_date` int(10) unsigned NOT NULL,
-  `proj_statut` varchar(45) NOT NULL,
-  `proj_hpurl` varchar(155) NOT NULL,
-  `proj_docurl` varchar(155) NOT NULL,
-  `usm_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY (`proj_id`),
-  KEY `fk_usm_id` (`usm_id`),
-  CONSTRAINT `fk_usm_id` FOREIGN KEY (`usm_id`) REFERENCES `user_staffmembre` (`usm_id`) ON UPDATE CASCADE
+CREATE TABLE `proj_issueStatus` (
+  `istut_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `istut_title` varchar(45) NOT NULL,
+  PRIMARY KEY (`istut_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `project`
+-- Dumping data for table `proj_issueStatus`
 --
 
-LOCK TABLES `project` WRITE;
-/*!40000 ALTER TABLE `project` DISABLE KEYS */;
-/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+LOCK TABLES `proj_issueStatus` WRITE;
+/*!40000 ALTER TABLE `proj_issueStatus` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proj_issueStatus` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-12-05 17:13:18
+-- Dump completed on 2011-12-05 17:14:18
