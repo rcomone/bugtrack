@@ -4,6 +4,7 @@
 	$teammembercount = '';
 	$teamcount = '';
 	$teamcount2 = '';
+	$teamcount3 = '';
 	foreach ($this->staffteams as $team) : 
 		foreach ($team->getUsers() as $user):
 			$teammembercount++;
@@ -11,7 +12,10 @@
 		if($teamcount == ''){$teamcount = $teammembercount;}
 		else{
 			$teamcount2 = $teamcount;
-			$teamcount = $teammembercount - $teamcount2;
+			$teamcount3 = $teammembercount - $teamcount2;
+			if ($teamcount3 >= $teamcount){
+				$teamcount = $teammembercount - $teamcount2;
+			}
 		}
 	endforeach;
 		for ( $i =1;$i <= $teamcount; $i++) :
