@@ -16,6 +16,42 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `bugtrack`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `bugtrack` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `bugtrack`;
+
+--
+-- Table structure for table `project`
+--
+
+DROP TABLE IF EXISTS `project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `project` (
+  `proj_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `proj_name` varchar(45) NOT NULL,
+  `proj_desc` text NOT NULL,
+  `proj_date` int(10) NOT NULL,
+  `proj_statut` varchar(45) NOT NULL,
+  `proj_hpurl` varchar(155) NOT NULL,
+  `proj_docurl` varchar(155) NOT NULL,
+  PRIMARY KEY (`proj_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project`
+--
+
+LOCK TABLES `project` WRITE;
+/*!40000 ALTER TABLE `project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_staffmembre`
 --
 
@@ -82,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-12-02 15:41:00
+-- Dump completed on 2011-12-05 14:21:30
