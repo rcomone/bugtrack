@@ -41,4 +41,9 @@ class User_StaffmembreController extends Zend_Controller_Action
         $service = new User_Service_Staffmembre();
         $this->view->staffmembres = $service->getList();
     }
+	public function teamlistAction()
+    {
+        $service = new User_Service_Staffmembre();
+        $this->view->staffteams = $service->getTeamList();
+    }
 }
