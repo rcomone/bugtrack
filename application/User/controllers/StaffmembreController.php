@@ -46,10 +46,6 @@ class User_StaffmembreController extends Zend_Controller_Action
     public function saveAction(){
 		$form = new User_Form_Save();
 
-    }     
-    public function createAction(){
-		$form = new User_Form_Create();
-
 			if ($this->getRequest()->isPost()) {
 				if ($form->isValid($_POST)) {
 					$this->userService = new User_Service_Staffmembre();
@@ -65,7 +61,7 @@ class User_StaffmembreController extends Zend_Controller_Action
 				}
 			}
 			 
-		$this->view->createForm = $form;
+		$this->view->saveForm = $form;
     }
 
 	public function teamlistAction()
