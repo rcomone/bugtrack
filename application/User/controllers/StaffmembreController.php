@@ -40,16 +40,16 @@ class User_StaffmembreController extends Zend_Controller_Action
     {
         $service = new User_Service_Staffmembre();
         $this->view->staffmembres = $service->getList();
-<<<<<<< HEAD
+
     }
      
     public function saveAction(){
 		$form = new User_Form_Save();
-=======
+
     }     
     public function createAction(){
 		$form = new User_Form_Create();
->>>>>>> 04d13db03d8c8c89c85cef409bc4ac3317e151b6
+
 			if ($this->getRequest()->isPost()) {
 				if ($form->isValid($_POST)) {
 					$this->userService = new User_Service_Staffmembre();
@@ -67,13 +67,11 @@ class User_StaffmembreController extends Zend_Controller_Action
 			 
 		$this->view->createForm = $form;
     }
-<<<<<<< HEAD
-    
-=======
+
 	public function teamlistAction()
     {
         $service = new User_Service_Staffmembre();
         $this->view->staffteams = $service->getTeamList();
     }
->>>>>>> 04d13db03d8c8c89c85cef409bc4ac3317e151b6
+
 }
