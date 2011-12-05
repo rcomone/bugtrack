@@ -112,17 +112,25 @@ class User_Model_Mapper_Staffmembre
     }
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
-           $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');
-           $team = new User_Model_Team();
-           $team->setId($teamRow->ut_id)
-                     ->setName($teamRow->ut_name);
+           $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');  
+                   
+           $team = new User_Model_Team();	
+           if( $teamRow instanceof User_Model_Team) {	           
+	           $team->setId($teamRow->ut_id)
+	                     ->setName($teamRow->ut_name);
+           }
+           
            $user = new User_Model_Staffmembre();
            $user->setId($row->usm_id)
                    ->setFirstname($row->usm_firstname)
                    ->setLastname($row->usm_lastname)
                    ->setEmail($row->usm_email)
-                   ->setLogin($row->usm_login)
-                   ->setTeam($team);
+                   ->setLogin($row->usm_login);
+           
+		    if( $team instanceof User_Model_Team) {
+	           $user->setTeam($team);
+            }
+                   
            return $user;
     }
     
