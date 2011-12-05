@@ -9,18 +9,27 @@
            <label>Projects lists</label>
            <route>ProjectsList</route>     
        </ProjectsList>
+       
        <UsersList>
            <label>Users list</label>
            <route>UsersList</route>     
        </UsersList>
+       
        <TeamList>
            <label>Team list</label>
            <route>TeamList</route>     
        </TeamList>
+       
+       <CreateList>
+           <label>Create list</label>
+           <route>CreateList</route>     
+       </CreateList>
+       
        <UsersAuth>
            <label>Connexion</label>
            <route>UsersAuth</route>     
            <visible>0</visible>
        </UsersAuth>
+       
    </main>
 </config>
