@@ -1,5 +1,28 @@
 <table>
-<?php  foreach ($this->staffteams as $team) : ?>
+	<th>Team</th>
+<?php
+	$teammembercount = '';
+	$teamcount = '';
+	$teamcount2 = '';
+	$teamcount3 = '';
+	foreach ($this->staffteams as $team) : 
+		foreach ($team->getUsers() as $user):
+			$teammembercount++;
+		endforeach;
+		if($teamcount == ''){$teamcount = $teammembercount;}
+		else{
+			$teamcount2 = $teamcount;
+			$teamcount3 = $teammembercount - $teamcount2;
+			if ($teamcount3 >= $teamcount){
+				$teamcount = $teammembercount - $teamcount2;
+			}
+		}
+	endforeach;
+		for ( $i =1;$i <= $teamcount; $i++) :
+			echo '<th>Prénom, Nom</th>';
+		endfor;
+
+	foreach ($this->staffteams as $team) : ?>
     <tr>
         <td><?php echo $team->getName() ?></td>
         <?php foreach ($team->getUsers() as $user): ?>
