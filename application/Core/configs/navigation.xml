@@ -13,6 +13,10 @@
            <label>Users list</label>
            <route>UsersList</route>     
        </UsersList>
+       <TeamList>
+           <label>Team list</label>
+           <route>TeamList</route>     
+       </TeamList>
        <UsersAuth>
            <label>Connexion</label>
            <route>UsersAuth</route>     
