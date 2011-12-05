@@ -90,6 +90,35 @@ class User_Model_Mapper_Project
            return $projects;
     }
     
+    
+	public function delete ($id) 
+    {
+    	$where= 'proj_id ='.$id;
+    	$rowSet = $this->getDbTable()->fetchRow($where);
+    	
+         if ( !$rowSet->current()) {
+               return false;
+           }    	
+           
+        $rowSet->delete();
+    }    
+    
+    public function update ($project)
+    {
+    	
+    	$data = array(
+    	'proj_name' => $project->getName(),
+    	'proj_desc' => $project->getDescription(),
+    	'proj_date' => $project->getDate(),
+        'proj_status'=> $project->getStatus(),
+        'proj_hpurl' =>$project->getHomepageUrl(),
+        'proj_docurl'=>$project->getDocUrl(),
+    	);
+    	
+    	
+    }
+    
+    
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
     	$userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
