@@ -21,13 +21,13 @@ resources.modules[] = ""
 
 resources.layout.layoutPath = APPLICATION_PATH "/Core/views/layouts"
 
-;resources.multidb.db1.adapter = "pdo_mysql"
-;resources.multidb.db1.host = "127.0.0.1"
-;resources.multidb.db1.username = "user"
-;resources.multidb.db1.password = "pass"
-;resources.multidb.db1.dbname = "dbname"
-;resources.multidb.db1.charset = "UTF8"
-;resources.multidb.db1.isDefaultTableAdapter = true
+resources.multidb.db1.adapter = "pdo_mysql"
+resources.multidb.db1.host = "127.0.0.1"
+resources.multidb.db1.username = "root"
+resources.multidb.db1.password = "0000"
+resources.multidb.db1.dbname = "bugtrack"
+resources.multidb.db1.charset = "UTF8"
+resources.multidb.db1.isDefaultTableAdapter = true
 
 [testing:production]
 phpSettings.display_errors = 0
