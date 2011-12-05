@@ -134,7 +134,9 @@ th, td {
 
 .navigation > li {
 	display:inline;
-	margin:0
+	margin-right: 5px;
+	padding: 17px;
+	text-color: white;
 }
 
 .navigation > li > a, .navigation > li > span {
