@@ -98,16 +98,13 @@ class User_Model_Mapper_Staffmembre
                      ->setName($teamRow->ut_name);
            $user = new User_Model_Staffmembre();
            $user->setId($row->usm_id)
-                   ->setFirstname($row->usm_firstname)
-                   ->setLastname($row->usm_lastname)
-                   ->setEmail($row->usm_email)
-                   ->setLogin($row->usm_login)
-                   ->setTeam($team);
+                ->setFirstname($row->usm_firstname)
+                ->setLastname($row->usm_lastname)
+                ->setEmail($row->usm_email)
+                ->setLogin($row->usm_login)
+                ->setTeam($team);
            return $user;
     }
-<<<<<<< HEAD
-}
-=======
     
     public function create(User_Model_Staffmembre $user){
     	$data = array(
@@ -117,7 +114,7 @@ class User_Model_Mapper_Staffmembre
     			'usm_login'  	  => $user->getLogin(),
     			'usm_password'    => $user->getPassword()    	
 	    );
-	    print_r($data);
+	    print_r($data); 
 	    
 	    try{
        		$this->getDbTable()->insert($data);
@@ -138,4 +135,3 @@ class User_Model_Mapper_Staffmembre
 
 
 
->>>>>>> ebd019eef2abbd57117e83a865c610365f446615
