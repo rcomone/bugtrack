@@ -69,8 +69,7 @@ class User_Service_Staffmembre
      public function save(User_Model_Staffmembre $user)
      {
           // TODO - Implement
-          if ((int) $user->getId() !==0 ) {
-          	
+          if ((int) $user->getId() !== 0 ) {
               try {
                   // update
                   return self::STAFF_MEMBER_UPDATED;
@@ -79,14 +78,11 @@ class User_Service_Staffmembre
               }
               
           } else {
-          	
               try {
                   // insert
-				  $userMapper = new User_Model_Mapper_Staffmembre();
-         		  $userMapper->create($user);
-                  return self::STAFF_MEMBER_CREATED;                  
-              } catch (Exception $e) {              	
-                  return self::STAFF_MEMBER_CREATION_FAILED;                  
+                  return self::STAFF_MEMBER_CREATED;
+              } catch (Exception $e) {
+                  return self::STAFF_MEMBER_CREATION_FAILED;
               }
           }
      }
