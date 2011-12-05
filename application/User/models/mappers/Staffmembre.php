@@ -90,48 +90,62 @@ class User_Model_Mapper_Staffmembre
            return $users;
     }
     
+    public function save(User_Model_Staffmembre $user) 
+    {
+        $data = $this->_objectToRow($user);
+       
+        if (0===(int) $data['usm_id']) {
+            unset($data['usm_id']);
+            try  {
+                return $this->getDbTable()->insert($data);
+            } catch (Zend_Db_Table_Exception $e) {
+                throw $e;
+            }
+        } else {
+            $where = 'usm_id = ?';
+            return $this->getDbTable()
+                               ->update(
+                                       $data,
+                                       array($where => $data['usm_id'])
+                                   );
+        }
+    }
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
-           $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');
-           $team = new User_Model_Team();
-           $team->setId($teamRow->ut_id)
-                     ->setName($teamRow->ut_name);
+           $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');  
+                   
+           $team = new User_Model_Team();	
+           if( $teamRow instanceof User_Model_Team) {	           
+	           $team->setId($teamRow->ut_id)
+	                     ->setName($teamRow->ut_name);
+           }
+           
            $user = new User_Model_Staffmembre();
            $user->setId($row->usm_id)
-                ->setFirstname($row->usm_firstname)
-                ->setLastname($row->usm_lastname)
-                ->setEmail($row->usm_email)
-                ->setLogin($row->usm_login)
-                ->setTeam($team);
+                   ->setFirstname($row->usm_firstname)
+                   ->setLastname($row->usm_lastname)
+                   ->setEmail($row->usm_email)
+                   ->setLogin($row->usm_login);
+           
+		    if( $team instanceof User_Model_Team) {
+	           $user->setTeam($team);
+            }
+                   
            return $user;
     }
     
-    public function create(User_Model_Staffmembre $user){
-    	$data = array(
-	            'usm_firstname'   => $user->getFirstname(),
-    			'usm_lastname'    => $user->getLastname(),
-    			'usm_email'  	  => $user->getEmail(),
-    			'usm_login'  	  => $user->getLogin(),
-    			'usm_password'    => $user->getPassword()    	
-	    );
-	    print_r($data); 
-	    
-	    try{
-       		$this->getDbTable()->insert($data);
-	    } catch (Exception $e) {
-	    	$e->getMessage(); 
-	    }
+    private function _objectToRow(User_Model_Staffmembre $user)
+    {
+        $userRow['usm_id'] = $user->getId();
+        $userRow['usm_firstname'] = $user->getFirstname();
+        $userRow['usm_lastname'] = $user->getLastname();
+        $userRow['usm_email'] = $user->getEmail();
+        $userRow['usm_login'] = $user->getLogin();
+        $userRow['usm_password'] = $user->getPassword();
+        if( $user->getTeam() instanceof User_Model_Team) {
+            $userRow['ut_id'] = $user->getTeam()->getId();
+        }
+        return $userRow;
+        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
