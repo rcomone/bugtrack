@@ -30,3 +30,17 @@ resources.layout.layoutPath = APPLICATION_PATH "/Core/views/layouts"
 [testing:production]
 phpSettings.display_errors = 0
 [development:production]
+
+resources.Zfdebug.run = 1
+resources.Zfdebug.plugins[] = "File"
+resources.Zfdebug.plugins[] = "Variables"
+resources.Zfdebug.plugins[] = "Html"
+resources.Zfdebug.plugins[] = "Memory"
+resources.Zfdebug.plugins[] = "Time"
+resources.Zfdebug.plugins[] = "Registry"
+resources.Zfdebug.plugins[] = "Exception"
+resources.Zfdebug.plugins[] = "Database"
+;resources.Zfdebug.plugins[] = "Cache"
+resources.Zfdebug.jquery_path = "/js/jquery-1.7.1.min.js"
+resources.Zfdebug.js_path = "/js"
+resources.Zfdebug.css_path = "/css"
