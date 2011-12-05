@@ -5,7 +5,7 @@ $this->saveForm->clearDecorators();
 
 // Redéfinition des décorateurs nécessaires
 
-$this->saveForm->firstname->setLabel('Prénom')
+$this->saveForm->firstname->setLabel('Prenom')
                             ->setAttrib('class' , 'formField')
                             ->setDescription('Entrez votre prénom')
                             ->setDecorators(array(
@@ -14,22 +14,58 @@ $this->saveForm->firstname->setLabel('Prénom')
                                       // array('Description', array('class' => 'test')),
                                       'Errors',
                                       array( 'HtmlTag', array('tag' => 'p'))
-                                   	 )
+                                   	  )
                              );
 
+$this->saveForm->email->setLabel('Courriel')
+                         ->setAttrib('class' , 'formField')
+                         ->setDescription('Entrez votre nom')
+                         ->setDecorators(array(
+                                  'ViewHelper',
+                                  array( 'Label', array( 'class' => 'formLabel')),
+                                  // array('Description', array('class' => 'test')),
+                                  'Errors',
+                                  array( 'HtmlTag', array('tag' => 'p'))
+                                  )
+                         );
+                         
 $this->saveForm->lastname->setLabel('Nom')
-                                    ->setAttrib('class' , 'formField')
-                                    ->setDescription('Entrez votre nom')
-                                    ->setDecorators(array(
-                                            'ViewHelper',
-                                            array( 'Label', array( 'class' => 'formLabel')),
-                                           // array('Description', array('class' => 'test')),
-                                            'Errors',
-                                            array( 'HtmlTag', array('tag' => 'p'))
-                                        )
-                                    );
-                                    
-$this->saveForm->submit->setLabel('Connexion')
+                         ->setAttrib('class' , 'formField')
+                         ->setDescription('Entrez votre nom')
+                         ->setDecorators(array(
+                                  'ViewHelper',
+                                  array( 'Label', array( 'class' => 'formLabel')),
+                                  // array('Description', array('class' => 'test')),
+                                  'Errors',
+                                  array( 'HtmlTag', array('tag' => 'p'))
+                                  )
+                         );
+
+$this->saveForm->login->setLabel('Nom d\'utilisateur')
+                         ->setAttrib('class' , 'formField')
+                         ->setDescription('Entrez votre nom')
+                         ->setDecorators(array(
+                                  'ViewHelper',
+                                  array( 'Label', array( 'class' => 'formLabel')),
+                                  // array('Description', array('class' => 'test')),
+                                  'Errors',
+                                  array( 'HtmlTag', array('tag' => 'p'))
+                                  )
+                         );
+
+$this->saveForm->password->setLabel('Mot de passe')
+                         ->setAttrib('class' , 'formField')
+                         ->setDescription('Entrez votre nom')
+                         ->setDecorators(array(
+                                  'ViewHelper',
+                                  array( 'Label', array( 'class' => 'formLabel')),
+                                  // array('Description', array('class' => 'test')),
+                                  'Errors',
+                                  array( 'HtmlTag', array('tag' => 'p'))
+                                  )
+                         );
+                         
+$this->saveForm->submit->setLabel('Envoyer')
                                        ->setAttrib('class' , 'formBtn')
                                         ->setDecorators(array(
                                             'ViewHelper',
