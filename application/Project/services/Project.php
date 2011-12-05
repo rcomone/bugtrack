@@ -25,7 +25,7 @@
 /**
  * @category       Bugtrack
  * @package        Project
- * @subpackage  Service
+ * @subpackage     Service
  * @desc           Project service layer
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
@@ -35,22 +35,18 @@
  */
 class Project_Service_Project
 {
-     const PROJECT_UPDATED = 'staffMemberUpdated';
-     const PROJECT_UPDATE_FAILED = 'staffMemberUpdateFailed';
-     const PROJECT_CREATED = 'staffMemberCreated';
-     const PROJECT_CREATION_FAILED = 'staffMemberCreationFailed';
+     const PROJECT_UPDATED = 'ProjectUpdated';
+     const PROJECT_UPDATE_FAILED = 'ProjectUpdateFailed';
+     const PROJECT_CREATED = 'ProjectCreated';
+     const PROJECT_CREATION_FAILED = 'ProjectCreationFailed';
      /**
       * Retrieves all projects entries at storage layer level
       * @return multitype:Project_Model_Project
       */
      public function getList()
      {
-          // TODO - Implement
-         return array(
-             new Project_Model_Project(),
-             new Project_Model_Project(),
-             new Project_Model_Project()
-         );
+          $projectMapper = new Project_Model_Mapper_Project();
+          return $projectMapper->getList();
      }
      
      /**
@@ -60,8 +56,8 @@ class Project_Service_Project
       */
      public function delete(Project_Model_Project $project)
      {
-         // TODO - Implement
-         return true;
+         $projectDelete = new Project_Model_Mapper_Project();
+         return $projectDelete->delete();
      }
      
      /**

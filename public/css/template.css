@@ -1,3 +1,7 @@
+.breadcrumbs {
+	margin-bottom:20px;
+}
+
 .center {
 	text-align:center;
 }
@@ -180,6 +184,7 @@ label {
 	font-size:17px;
 	margin:0 0 5px;
 	position:relative;
+	width:120px;
 }
 
 small {
