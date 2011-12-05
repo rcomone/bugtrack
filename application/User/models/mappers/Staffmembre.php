@@ -119,7 +119,7 @@ class User_Model_Mapper_Staffmembre
 	    try{
        		$this->getDbTable()->insert($data);
 	    } catch (Exception $e) {
-	    	$e->getMessage();
+	    	$e->getMessage(); 
 	    }
     }
 }
