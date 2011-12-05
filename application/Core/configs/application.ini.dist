@@ -11,6 +11,8 @@ bootstrap.class = "Bootstrap"
 
 autoloadernamespaces[] = "Ip_"
 
+pluginpaths.Ip_Application_Resource = ROOT_PATH "/library/Ip/Application/Resource"
+
 resources.frontController.defaultModule = "Core"
 resources.frontController.controllerDirectory = APPLICATION_PATH "/Core/controllers"
 resources.frontController.moduleDirectory = APPLICATION_PATH "/"
