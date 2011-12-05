@@ -105,4 +105,37 @@ class User_Model_Mapper_Staffmembre
                    ->setTeam($team);
            return $user;
     }
+<<<<<<< HEAD
 }
+=======
+    
+    public function create(User_Model_Staffmembre $user){
+    	$data = array(
+	            'usm_firstname'   => $user->getFirstname(),
+    			'usm_lastname'    => $user->getLastname(),
+    			'usm_email'  	  => $user->getEmail(),
+    			'usm_login'  	  => $user->getLogin(),
+    			'usm_password'    => $user->getPassword()    	
+	    );
+	    print_r($data);
+	    
+	    try{
+       		$this->getDbTable()->insert($data);
+	    } catch (Exception $e) {
+	    	$e->getMessage(); 
+	    }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> ebd019eef2abbd57117e83a865c610365f446615

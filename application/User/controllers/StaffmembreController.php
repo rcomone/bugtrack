@@ -41,9 +41,33 @@ class User_StaffmembreController extends Zend_Controller_Action
         $service = new User_Service_Staffmembre();
         $this->view->staffmembres = $service->getList();
     }
+<<<<<<< HEAD
 	public function teamlistAction()
     {
         $service = new User_Service_Staffmembre();
         $this->view->staffteams = $service->getTeamList();
     }
+=======
+    
+    public function createAction(){
+		$form = new User_Form_Create();
+			if ($this->getRequest()->isPost()) {
+				if ($form->isValid($_POST)) {
+					$this->userService = new User_Service_Staffmembre();
+					$user = new User_Model_Staffmembre();
+					
+					$user->setFirstname($form->getValue('firstname'));
+					$user->setLastname($form->getValue('lastname'));
+					$user->setEmail($form->getValue('email'));
+					$user->setLogin($form->getValue('login'));
+					$user->setPassword($form->getValue('password'));
+										
+					$this->userService->save($user);
+				}
+			}
+			 
+		$this->view->createForm = $form;
+    }
+    
+>>>>>>> ebd019eef2abbd57117e83a865c610365f446615
 }
