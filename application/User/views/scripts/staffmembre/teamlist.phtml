@@ -1,0 +1,10 @@
+<table>
+<?php  foreach ($this->staffteams as $team) : ?>
+    <tr>
+        <td><?php echo $team->getName() ?></td>
+        <?php foreach ($team->getUsers() as $user): ?>
+            <td><?php echo $user->getFirstname();?>,&nbsp<?php echo $user->getLastname(); ?></td>
+        <?php endforeach;?>
+    </tr>
+<?php endforeach;?>
+</table>

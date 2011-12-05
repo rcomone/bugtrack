@@ -40,36 +40,43 @@ class User_Model_Staffmembre
      * @var integer
      */
     private $_id;
+    
     /**
      * User's firstname
      * @var string
      */
     private $_firstname;
+    
     /**
      * User's lastname
      * @var string
      */
     private $_lastname;
+    
     /**
      * user's email address
      * @var unknown_type
      */
     private $_email;
+    
     /**
      * user's login
      * @var string
      */
     private $_login;
+    
     /**
      * user's password
      * @var string
      */
     private $_password;
+    
     /**
      * user's team
      * @var User_Model_Team
      */
     private $_team;
+    
 	/**
      * @return the $_id
      */
