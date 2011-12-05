@@ -62,4 +62,10 @@ class User_StaffmembreController extends Zend_Controller_Action
 		$this->view->createForm = $form;
     }
     
+	public function teamlistAction()
+    {
+        $service = new User_Service_Staffmembre();
+        $this->view->staffteams = $service->getTeamList();
+    }
+    
 }
