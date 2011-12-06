@@ -35,10 +35,7 @@
  */
 class Project_Service_Project
 {
-     const PROJECT_UPDATED = 'ProjectUpdated';
-     const PROJECT_UPDATE_FAILED = 'ProjectUpdateFailed';
-     const PROJECT_CREATED = 'ProjectCreated';
-     const PROJECT_CREATION_FAILED = 'ProjectCreationFailed';
+
      /**
       * Retrieves all projects entries at storage layer level
       * @return multitype:Project_Model_Project
@@ -57,7 +54,7 @@ class Project_Service_Project
      public function delete(Project_Model_Project $project)
      {
          $projectDelete = new Project_Model_Mapper_Project();
-         return $projectDelete->delete();
+         return $projectDelete->delete($project);
      }
      
      /**
@@ -68,25 +65,9 @@ class Project_Service_Project
       */
      public function save(Project_Model_Project $project)
      {
-          // TODO - Implement
-          if ((int) $project->getId() !== 0 ) {
-              try {
-                  // update
-                  return self::PROJECT_UPDATED;
-              } catch (Exception $e) {
-                  return self::PROJECT_UPDATE_FAILED;
-              }
-              
-          } else {
-              try {
-                  // insert
-                  return self::PROJECT_CREATED;
-              } catch (Exception $e) {
-                  return self::PROJECT_CREATION_FAILED;
-              }
-          }
+          $projectSave = new Project_Model_Mapper_Project();
 
-
+		  $projectSave->save($project);
      }
      
      /**
@@ -96,13 +77,16 @@ class Project_Service_Project
       */
      public function find($projectId)
      {
-          // TODO - Implement
+          $projectFind = new Project_Model_Mapper_Project();
+          
           if ((int) $projectId !== 0) {
-             $project = new Project_Model_Project();
+             $project = $projectFind->find((int) $projectId);
              return $project;
           } else {
               return false;
           }
      }
-        
+
+     
+     
 }
