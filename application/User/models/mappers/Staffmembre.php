@@ -96,9 +96,9 @@ class User_Model_Mapper_Staffmembre
 		$userOld = $this->findByLogin($userIn->getLogin());
     	$data = $this->_objectToRow($userIn);
 		unset($data['usm_id']);
-		
-        if (!$userOld) {
-            
+
+        if (!$userOld instanceof User_Model_Staffmembre) {
+
             try  {
                 return $this->getDbTable()->insert($data);
             } catch (Zend_Db_Table_Exception $e) {
@@ -106,8 +106,10 @@ class User_Model_Mapper_Staffmembre
             }            
             
         } else {
+        	
         	try  {
                 $where = 'usm_id = ' .$userOld->getId();
+                print_r($data).'   '; echo $where; exit;
            		return $this->getDbTable()->update($data, $where);  
             } catch (Zend_Db_Table_Exception $e) {
                  throw $e;

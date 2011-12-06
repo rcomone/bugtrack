@@ -32,7 +32,7 @@ class User_Form_Save extends Zend_Form
             array($firstnameField, $lastnameField, $emailField, $loginField, $passwordField, $submitBtn)
         );
         
-        $this->setAction('/User/Staffmembre/save');
+        $this->setAction('/User/Staffmembre/insert');
 
     }
     

@@ -43,7 +43,7 @@ class User_StaffmembreController extends Zend_Controller_Action
 
     }
      
-    public function saveAction(){
+    public function insertAction(){
 		$form = new User_Form_Save();
 
 			if ($this->getRequest()->isPost()) {
@@ -66,8 +66,8 @@ class User_StaffmembreController extends Zend_Controller_Action
     
     public function editAction()
     {
-        $userId = (int) $this->getRequest('id');
-        if (0===$userId) {
+        $userId = (int) $this->getRequest()->getParam('id');
+        if (NULL===$userId) {
             throw new Zend_Controller_Exception('No user');
         }
         
@@ -86,9 +86,9 @@ class User_StaffmembreController extends Zend_Controller_Action
                     echo 'erreur';exit;
             }
         } else {
-            $form = new User_Form_Save();
+            $form = new User_Form_Save();            
             $form->populate($user->toArray());
-            $this->view->form = $form;
+            $this->view->saveForm = $form;
         }
     }
 
