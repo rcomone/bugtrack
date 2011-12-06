@@ -20,7 +20,7 @@ class User_Form_Save extends Zend_Form
         $loginField->addValidator(new Zend_Validate_Alnum());
         $loginField->setRequired(true);
         
-        $idField = new Zend_Form_Element_Hidden('id');
+        $idField = new Zend_Form_Element_Hidden('id'); 
         
         $passwordField = new Zend_Form_Element_Password('password');
         $passwordField->addValidator(new Zend_Validate_StringLength(
