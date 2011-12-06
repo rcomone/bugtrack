@@ -35,6 +35,10 @@
  */
 class Project_Service_Project
 {
+	 const STAFF_MEMBER_UPDATED = 'projectUpdated';
+     const STAFF_MEMBER_UPDATE_FAILED = 'projectUpdateFailed';
+     const STAFF_MEMBER_CREATED = 'projectCreated';
+     const STAFF_MEMBER_CREATION_FAILED = 'projectCreationFailed';
      /**
       * Retrieves all projects entries at storage layer level
       * @return multitype:Project_Model_Project
@@ -64,8 +68,22 @@ class Project_Service_Project
       */
      public function save(Project_Model_Project $project)
      {
-          $projectSave = new Project_Model_Mapper_Project();
-		  $projectSave->save($project);
+        $projectMapper = new Project_Model_Mapper_Project();
+        if ((int)$project->getId() !== 0){
+            try {
+                $projectMapper->update($project);
+                return self::STAFF_MEMBER_UPDATED;
+            } catch (Exception $e) {
+                return self::STAFF_MEMBER_UPDATE_FAILED;
+            }
+        } else {
+            try {
+                $projectMapper->insert($project);
+                return self::STAFF_MEMBER_CREATED;
+            } catch (Exception $e) {
+                return self::STAFF_MEMBER_CREATED_FAILED;
+            }
+        }
      }
      
      /**

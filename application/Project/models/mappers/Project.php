@@ -98,21 +98,6 @@ class Project_Model_Mapper_Project
             return false;
         }
         $rowSet->delete();
-    }    
-
-	public function save(Project_Model_Project $project)
-    {
-        $data = $this->_objectToRow($project);
-        if (0 === (int)$data['proj_id']) {
-            unset($data['proj_id']);
-            try {
-                $this->insert($data);
-            } catch (Zend_Db_Table_Exception $e) {
-                throw $e;
-            }
-        } else {
-            $this->update($data);
-        }
     }
     
     public function rowToObject(Zend_Db_Table_Row $row)
@@ -133,15 +118,18 @@ class Project_Model_Mapper_Project
 		return $project;
     }
     
-    private function insert($data)
+    public function insert(Project_Model_Project $project)
     {
+        $data = $this->_objectToRow($project);
+        unset($data['proj_id']);
         return $this->getDbTable()->insert($data);
     }
     
-    private function update($data)
+    public function update(Project_Model_Project $project)
     {
-    	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
-    	return $this->getDbTable()->update($data, $where);
+        $data = $this->_objectToRow($project);
+        $where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
+        return $this->getDbTable()->update($data, $where);
     } 
     
  	private function _objectToRow(Project_Model_Project $project)
