@@ -144,7 +144,7 @@ class Project_Model_Mapper_Project
     	$userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
         $user = new User_Model_Staffmembre();
         $user->setId($userRow->usm_id)
-		     ->setName($userRow->usm_name);
+		     ->setName($userRow->usm_login);
         $project = new Project_Model_Project();
         $project->setId($row->proj_id)
 				->setName($row->proj_name)
