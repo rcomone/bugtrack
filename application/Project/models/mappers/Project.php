@@ -35,7 +35,7 @@
  */
  
 
-class User_Model_Mapper_Project
+class Project_Model_Mapper_Project
 {
     private $_dbTable;
     
