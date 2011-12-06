@@ -115,62 +115,65 @@ class Project_Model_Mapper_Issue
         }
     }
     
-	private function insert($data)
+	private function insert(Project_Model_Issue $issue)
     {
+        $data = $this->_objectToRow($issue);
+        unset($data['iss_id']);
         return $this->getDbTable()->insert($data);
     }
     
-    private function update($data)
+    private function update(Project_Model_Issue $issue)
     {
-    	$where = $this->getDbTable()->getAdapter()->quoteInto('iss_id = ?', $data['iss_id']);
-    	return $this->getDbTable()->update($data, $where);
+        $data = $this->_objectToRow($issue);
+        $where = $this->getDbTable()->getAdapter()->quoteInto('iss_id = ?', $data['iss_id']);
+        return $this->getDbTable()->update($data, $where);
     }
     
     private function _objectToRow(Project_Model_Issue $issue)
     {
-    	$issueRow['iss_id'] = $issue->getId();
-    	$issueRow['iss_name'] = $issue->getName();
-    	$issueRow['iss_desc'] = $issue->getDescription();
-    	$issueRow['istyp_id'] = $issue->getType()->getId();
-    	$issueRow['istut_id'] = $issue->getStatus()->getId();
-    	$issueRow['iss_date'] = $issue->getDate();
-    	$issueRow['usm_id'] = $issue->getUser()->getId();
-    	$issueRow['proj_id'] = $issue->getProject()->getId();
-    	
-    	return $issueRow;
+        $issueRow['iss_id'] = $issue->getId();
+        $issueRow['iss_name'] = $issue->getName();
+        $issueRow['iss_desc'] = $issue->getDescription();
+        $issueRow['istyp_id'] = $issue->getType()->getId();
+        $issueRow['istut_id'] = $issue->getStatus()->getId();
+        $issueRow['iss_date'] = $issue->getDate();
+        $issueRow['usm_id'] = $issue->getUser()->getId();
+        $issueRow['proj_id'] = $issue->getProject()->getId();
+        
+        return $issueRow;
     }
     
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
-    	$statusRow = $row->findParentRow('Project_Model_DbTable_IssueStatus', 'IssueStatus');
+        $statusRow = $row->findParentRow('Project_Model_DbTable_IssueStatus', 'IssueStatus');
         $status = new Project_Model_IssueStatus();
         $status->setId($statusRow->istut_id)
-		       ->setTitle($statusRow->istut_title);
-		       
-    	$typeRow = $row->findParentRow('Project_Model_DbTable_IssueType', 'IssueType');
+               ->setTitle($statusRow->istut_title);
+               
+        $typeRow = $row->findParentRow('Project_Model_DbTable_IssueType', 'IssueType');
         $type = new Project_Model_IssueType();
         $type->setId($typeRow->istyp_id)
-		     ->setTitle($typeRow->istyp_title);
-		     
-    	$projectRow = $row->findParentRow('Project_Model_DbTable_Project', 'Project');
-    	$projectMapper = new Project_Model_Mapper_Project();
+             ->setTitle($typeRow->istyp_title);
+             
+        $projectRow = $row->findParentRow('Project_Model_DbTable_Project', 'Project');
+        $projectMapper = new Project_Model_Mapper_Project();
         $project = new Project_Model_Project();
         $project = $projectMapper->rowToObject($projectRow);
         
-    	$userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
+        $userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
         $user = new User_Model_Staffmembre();
         $user->setId($userRow->usm_id)
              ->setLogin($userRow->usm_login);
              
         $issue = new Project_Model_Issue();
         $issue->setId($row->iss_id)
-			  ->setName($row->iss_name)
-			  ->setDescription($row->iss_desc)
-			  ->setDate($row->iss_date)
-			  ->setStatus($status)
-			  ->setType($type)
-			  ->setProject($project)
-			  ->setUser($user);
-		return $issue;
+              ->setName($row->iss_name)
+              ->setDescription($row->iss_desc)
+              ->setDate($row->iss_date)
+              ->setStatus($status)
+              ->setType($type)
+              ->setProject($project)
+              ->setUser($user);
+        return $issue;
     }
 }

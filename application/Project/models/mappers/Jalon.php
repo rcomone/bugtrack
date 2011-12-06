@@ -100,25 +100,24 @@ class Project_Model_Mapper_Jalon
         $rowSet->delete();
     }    
     
-    private function insert($data)
+    public function insert(Project_Model_Jalon $jalon)
     {
-    	
-    	return $this->getDbTable()->insert($data);
-    	
+    	$data = $this->_objectToRow($jalon);
+        unset($data['jal_id']);
+        return $this->getDbTable()->insert($data);    	
     }
     
-    private function update($data)
+    public function update(Project_Model_Jalon $jalon)
     {
-        $where = $this->getDbTable()
-            ->getAdapter()
-            ->quoteInto('jal_id = ?', $data['jal_id']);
+    	$data = $this->_objectToRow($jalon);
+        $where = $this->getDbTable()->getAdapter()->quoteInto('jal_id = ?', $data['jal_id']);
         return $this->getDbTable()->update($data, $where);
     }
     
     public function save(Project_Model_Jalon $jalon)
     {
         $data = $this->_objectToRow($jalon);
-        if (0 === (int) $data['jal_id']) {
+        if (0 === (int)$data['jal_id']) {
             unset($data['jal_id']);
             try {
                 $this->insert($data);
