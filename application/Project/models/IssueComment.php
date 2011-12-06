@@ -36,104 +36,108 @@
  
 class Project_Model_IssueComment
 {
-	/**
+    /**
      * IssueComment's ref (formerly DB primary key)
      * @var integer
      */
-	private $_id;
-	
-	/**
-	 * IssueComment's user creator
-	 * @var User_Model_Staffmembre
-	 */
-	private $_user;
-	
-	/**
-	 * IssueComment's issue
-	 * @var Project_Model_Issue
-	 */
-	private $_issue;
-	
-	/**
-	 * IssueComment's content
-	 * @var string
-	 */
-	private $_content;
-	
-	/**
-	 * IssueComment's creation date
-	 * @var int epoch
-	 */
-	private $_date;
-	
-	/**
-	 * @return the $_id
-	 */
-	public function getId() {
-		return $this->_id;
-	}
+    private $_id;
+    
+    /**
+     * IssueComment's user creator
+     * @var User_Model_Staffmembre
+     */
+    private $_user;
+    
+    /**
+     * IssueComment's issue
+     * @var Project_Model_Issue
+     */
+    private $_issue;
+    
+    /**
+     * IssueComment's content
+     * @var string
+     */
+    private $_content;
+    
+    /**
+     * IssueComment's creation date
+     * @var int epoch
+     */
+    private $_date;
+    
+    /**
+     * @return the $_id
+     */
+    public function getId() {
+        return $this->_id;
+    }
 
-	/**
-	 * @param integer $_id
-	 */
-	public function setId($_id) {
-		$this->_id = $_id;
-	}
+    /**
+     * @param integer $_id
+     */
+    public function setId($_id) {
+        $this->_id = $_id;
+        return $this;
+    }
 
-	/**
-	 * @return the $_user
-	 */
-	public function getUser() {
-		return $this->_user;
-	}
+    /**
+     * @return the $_user
+     */
+    public function getUser() {
+        return $this->_user;
+    }
 
-	/**
-	 * @param User_Model_Staffmembre $_user
-	 */
-	public function setUser(User_Model_Staffmembre $_user) {
-		$this->_user = $_user;
-	}
+    /**
+     * @param User_Model_Staffmembre $_user
+     */
+    public function setUser(User_Model_Staffmembre $_user) {
+        $this->_user = $_user;
+        return $this;
+    }
 
-	/**
-	 * @return the $_issue
-	 */
-	public function getIssue() {
-		return $this->_issue;
-	}
+    /**
+     * @return the $_issue
+     */
+    public function getIssue() {
+        return $this->_issue;
+    }
 
-	/**
-	 * @param Project_Model_Issue $_issue
-	 */
-	public function setIssue(Project_Model_Issue $_issue) {
-		$this->_issue = $_issue;
-	}
+    /**
+     * @param Project_Model_Issue $_issue
+     */
+    public function setIssue(Project_Model_Issue $_issue) {
+        $this->_issue = $_issue;
+        return $this;
+    }
 
-	/**
-	 * @return the $_content
-	 */
-	public function getContent() {
-		return $this->_content;
-	}
+    /**
+     * @return the $_content
+     */
+    public function getContent() {
+        return $this->_content;
+    }
 
-	/**
-	 * @param string $_content
-	 */
-	public function setContent($_content) {
-		$this->_content = $_content;
-	}
+    /**
+     * @param string $_content
+     */
+    public function setContent($_content) {
+        $this->_content = $_content;
+        return $this;
+    }
 
-	/**
-	 * @return the $_date
-	 */
-	public function getDate() {
-		return $this->_date;
-	}
+    /**
+     * @return the $_date
+     */
+    public function getDate() {
+        return $this->_date;
+    }
 
-	/**
-	 * @param int $_date
-	 */
-	public function setDate($_date) {
-		$this->_date = $_date;
-	}
-
+    /**
+     * @param int $_date
+     */
+    public function setDate($_date) {
+        $this->_date = $_date;
+        return $this;
+    }
 }

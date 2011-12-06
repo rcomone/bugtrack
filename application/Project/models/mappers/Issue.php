@@ -100,29 +100,14 @@ class Project_Model_Mapper_Issue
         $rowSet->delete();
     }
     
-	public function save(Project_Model_Issue $issue)
-    {
-        $data = $this->_objectToRow($issue);
-        if (0 === (int)$data['iss_id']) {
-            unset($data['iss_id']);
-            try {
-                $this->insert($data);
-            } catch (Zend_Db_Table_Exception $e) {
-                throw $e;
-            }
-        } else {
-            $this->update($data);
-        }
-    }
-    
-	private function insert(Project_Model_Issue $issue)
+    public function insert(Project_Model_Issue $issue)
     {
         $data = $this->_objectToRow($issue);
         unset($data['iss_id']);
         return $this->getDbTable()->insert($data);
     }
     
-    private function update(Project_Model_Issue $issue)
+    public function update(Project_Model_Issue $issue)
     {
         $data = $this->_objectToRow($issue);
         $where = $this->getDbTable()->getAdapter()->quoteInto('iss_id = ?', $data['iss_id']);
