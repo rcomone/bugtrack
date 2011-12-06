@@ -90,26 +90,31 @@ class User_Model_Mapper_Staffmembre
            return $users;
     }
     
-    public function save(User_Model_Staffmembre $user) 
+    public function save(User_Model_Staffmembre $userIn) 
     {
-        $data = $this->_objectToRow($user);
-       
-        if (0===(int) $data['usm_id']) {
-            unset($data['usm_id']);
+		$userOld = $this->findByLogin($userIn->getLogin());
+    	$data = $this->_objectToRow($userIn);
+		unset($data['usm_id']);
+		
+        if (!$userOld) {
+            
             try  {
                 return $this->getDbTable()->insert($data);
             } catch (Zend_Db_Table_Exception $e) {
                 throw $e;
-            }
+            }            
+            
         } else {
-            $where = 'usm_id = ?';
-            return $this->getDbTable()
-                               ->update(
-                                       $data,
-                                       array($where => $data['usm_id'])
-                                   );
+        	try  {
+                $where = 'usm_id = ' .$userOld->getId();
+           		return $this->getDbTable()->update($data, $where);  
+            } catch (Zend_Db_Table_Exception $e) {
+                echo $e->getMessage();
+            }    
+                      
         }
     }
+    
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
            $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');  
