@@ -1,10 +1,10 @@
 <?php
 
 // Supprimer les decorateurs existants pour les redéfinir
-$this->saveForm->clearDecorators();
+$this->editForm->clearDecorators();
 
 // Redéfinition des décorateurs nécessaires
-$this->saveForm->firstname->setLabel('Prenom')
+$this->editForm->firstname->setLabel('Prenom')
                             ->setAttrib('class' , 'formField')
                             ->setDescription('Entrez votre prénom')
                             ->setDecorators(array(
@@ -16,7 +16,7 @@ $this->saveForm->firstname->setLabel('Prenom')
                                    	  )
                              );
 
-$this->saveForm->email->setLabel('Courriel')
+$this->editForm->email->setLabel('Courriel')
                          ->setAttrib('class' , 'formField')
                          ->setDescription('Entrez votre nom')
                          ->setDecorators(array(
@@ -28,7 +28,7 @@ $this->saveForm->email->setLabel('Courriel')
                                   )
                          );
                          
-$this->saveForm->lastname->setLabel('Nom')
+$this->editForm->lastname->setLabel('Nom')
                          ->setAttrib('class' , 'formField')
                          ->setDescription('Entrez votre nom')
                          ->setDecorators(array(
@@ -40,7 +40,7 @@ $this->saveForm->lastname->setLabel('Nom')
                                   )
                          );
 
-$this->saveForm->login->setLabel('Nom d\'utilisateur')
+$this->editForm->login->setLabel('Nom d\'utilisateur')
                          ->setAttrib('class' , 'formField')
                          ->setDescription('Entrez votre nom')
                          ->setDecorators(array(
@@ -52,7 +52,7 @@ $this->saveForm->login->setLabel('Nom d\'utilisateur')
                                   )
                          );
 
-$this->saveForm->password->setLabel('Mot de passe')
+$this->editForm->password->setLabel('Mot de passe')
                          ->setAttrib('class' , 'formField')
                          ->setDescription('Entrez votre nom')
                          ->setDecorators(array(
@@ -64,7 +64,7 @@ $this->saveForm->password->setLabel('Mot de passe')
                                   )
                          );
                          
-$this->saveForm->submit->setLabel('Modifier')
+$this->editForm->submit->setLabel('Modifier')
                                        ->setAttrib('class' , 'formBtn')
                                         ->setDecorators(array(
                                             'ViewHelper',
@@ -72,7 +72,7 @@ $this->saveForm->submit->setLabel('Modifier')
                                         )
                                     );
 
-echo $this->saveForm->setDecorators(
+echo $this->editForm->setDecorators(
     array(
         'FormElements',
         'Form'
