@@ -51,19 +51,19 @@ class Project_Model_Mapper_Issue
     
     public function find($id)
     {
-           $rowSet = $this->getDbTable()->find((int) $id);  
+           $rowSet = $this->getDbTable()->find((int)$id);  
            if ( !$rowSet->current()) {
                return false;
            }
            $row = $rowSet->current();
-           $project = new Project_Model_Issue();
-           $project = $this->_rowToObject($row);
-           return $project;
+           $issue = new Project_Model_Issue();
+           $issue = $this->_rowToObject($row);
+           return $issue;
     }
     
     public function findByName($name)
     {
-           $where = 'proj_name = ?';
+           $where = 'iss_name = ?';
            $query = $this->getDbTable()
                                  ->select()
                                  ->where($where, $name);
@@ -84,10 +84,60 @@ class Project_Model_Mapper_Issue
            }
            $users = array();
            foreach ($rowSet as $row) {
-               $project = $this->_rowToObject($row);
-               $projects[] = $project;
+               $issue = $this->_rowToObject($row);
+               $issues[] = $issue;
            }
-           return $projects;
+           return $issues;
+    }
+    
+    public function delete($id)
+    {
+    	$where = 'iss_id =' . $id;
+        $rowSet = $this->getDbTable()->fetchRow($where);
+        if (! $rowSet->current()) {
+            return false;
+        }
+        $rowSet->delete();
+    }
+    
+	public function save(Project_Model_Issue $issue)
+    {
+        $data = $this->_objectToRow($issue);
+        if (0 === (int)$data['iss_id']) {
+            unset($data['iss_id']);
+            try {
+                $this->insert($data);
+            } catch (Zend_Db_Table_Exception $e) {
+                throw $e;
+            }
+        } else {
+            $this->update($data);
+        }
+    }
+    
+	private function insert($data)
+    {
+        return $this->getDbTable()->insert($data);
+    }
+    
+    private function update($data)
+    {
+    	$where = $this->getDbTable()->getAdapter()->quoteInto('iss_id = ?', $data['iss_id']);
+    	return $this->getDbTable()->update($data, $where);
+    }
+    
+    private function _objectToRow(Project_Model_Issue $issue)
+    {
+    	$issueRow['iss_id'] = $issue->getId();
+    	$issueRow['iss_name'] = $issue->getName();
+    	$issueRow['iss_desc'] = $issue->getDescription();
+    	$issueRow['istyp_id'] = $issue->getType()->getId();
+    	$issueRow['istut_id'] = $issue->getStatus()->getId();
+    	$issueRow['iss_date'] = $issue->getDate();
+    	$issueRow['usm_id'] = $issue->getUser()->getId();
+    	$issueRow['proj_id'] = $issue->getProject()->getId();
+    	
+    	return $issueRow;
     }
     
     private function _rowToObject(Zend_Db_Table_Row $row)

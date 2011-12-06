@@ -89,9 +89,8 @@ class Project_Model_Mapper_Project
            }
            return $projects;
     }
-    
-    
-	public function delete ($id) 
+
+	public function delete($id) 
     {
         $where = 'proj_id =' . $id;
         $rowSet = $this->getDbTable()->fetchRow($where);
@@ -100,19 +99,8 @@ class Project_Model_Mapper_Project
         }
         $rowSet->delete();
     }    
-    
-    private function insert($data)
-    {
-        return $this->getDbTable()->insert($data);
-    }
-    
-    private function update ($data)
-    {
-    	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
-    	return $this->getDbTable()->update($data, $where);
-    }
-    
-    public function save (Project_Model_Project $project)
+
+	public function save(Project_Model_Project $project)
     {
         $data = $this->_objectToRow($project);
         if (0 === (int)$data['proj_id']) {
@@ -126,7 +114,6 @@ class Project_Model_Mapper_Project
             $this->update($data);
         }
     }
-    
     
     public function rowToObject(Zend_Db_Table_Row $row)
     {
@@ -146,15 +133,27 @@ class Project_Model_Mapper_Project
 		return $project;
     }
     
+    private function insert($data)
+    {
+        return $this->getDbTable()->insert($data);
+    }
+    
+    private function update($data)
+    {
+    	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
+    	return $this->getDbTable()->update($data, $where);
+    } 
+    
  	private function _objectToRow(Project_Model_Project $project)
     {
         $projectRow['proj_id'] = $project->getId();
-        $projectRow['proj_name'] = $project->getFirstname();
-        $projectRow['proj_desc'] = $project->getLastname();
-        $projectRow['proj_date'] = $project->getEmail();
-        $projectRow['proj_statut'] = $project->getLogin();
-        $projectRow['proj_hpurl'] = $project->getPassword();
-        $projectRow['proj_docurl'] = $project->getPassword();
+        $projectRow['proj_name'] = $project->getName();
+        $projectRow['proj_desc'] = $project->getDescription();
+        $projectRow['proj_date'] = $project->getDate();
+        $projectRow['proj_statut'] = $project->getStatus();
+        $projectRow['proj_hpurl'] = $project->getHomepageUrl();
+        $projectRow['proj_docurl'] = $project->getDocUrl();
+        $projectRow['usm_id'] = $project->getUser()->getId();
         
         return $projectRow;
     }
