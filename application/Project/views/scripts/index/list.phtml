@@ -15,15 +15,15 @@
 		</tr>
 	</thead>
 	<tbody>
-<?php  //foreach ($this->projects as $project) : ?>
+<?php  foreach ($this->projects as $project) : ?>
   <tr>
-      <td><?php //echo $project->getName() ?></td>
-      <td><?php //echo $project->getDescription() ?></td>
-      <td><?php //echo $project->getStatus() ?></td>
-      <td><?php //echo $project->getHomepageUrl() ?></td>
-      <td><?php //echo $project->getDocUrl() ?></td>
-      <td><?php //echo $project->getName()->getLogin() ?></td>
+      <td><?php echo $project->getName() ?></td>
+      <td><?php echo $project->getDescription() ?></td>
+      <td><?php echo $project->getStatus() ?></td>
+      <td><?php echo $project->getHomepageUrl() ?></td>
+      <td><?php echo $project->getDocUrl() ?></td>
+      <td><?php echo $project->getUser()->getLogin() ?></td>
   </tr>
-<?php //endforeach;?>
+<?php endforeach;?>
 	</tbody>
 </table>
