@@ -22,7 +22,8 @@
        
        <CreateList>
            <label>Create user</label>
-           <route>CreateList</route>     
+           <route>CreateList</route>
+           <visible>0</visible>  
        </CreateList>
        
        <UsersAuth>
