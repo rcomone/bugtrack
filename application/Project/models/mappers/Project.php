@@ -56,9 +56,9 @@ class Project_Model_Mapper_Project
                return false;
            }
            $row = $rowSet->current();
-           $ptoject = new Project_Model_Project();
-           $ptoject = $this->_rowToObject($row);
-           return $ptoject;
+           $project = new Project_Model_Project();
+           $project = $this->_rowToObject($row);
+           return $project;
     }
     
     public function findByName($name)
@@ -102,20 +102,20 @@ class Project_Model_Mapper_Project
     
     public function rowToObject(Zend_Db_Table_Row $row)
     {
-    	$userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
+        $userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
         $user = new User_Model_Staffmembre();
         $user->setId($userRow->usm_id)
-		     ->setName($userRow->usm_login);
+             ->setName($userRow->usm_login);
         $project = new Project_Model_Project();
         $project->setId($row->proj_id)
-				->setName($row->proj_name)
-				->setDescription($row->proj_desc)
-				->setDate($row->proj_date)
-				->setStatus($row->proj_statut)
-				->setHomepageUrl($row->proj_hpurl)
-				->setDocUrl($row->proj_docurl)
-				->setUser($user);
-		return $project;
+                ->setName($row->proj_name)
+                ->setDescription($row->proj_desc)
+                ->setDate($row->proj_date)
+                ->setStatus($row->proj_statut)
+                ->setHomepageUrl($row->proj_hpurl)
+                ->setDocUrl($row->proj_docurl)
+                ->setUser($user);
+        return $project;
     }
     
     public function insert(Project_Model_Project $project)

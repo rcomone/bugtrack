@@ -35,10 +35,10 @@
  */
 class Project_Service_Project
 {
-	 const STAFF_MEMBER_UPDATED = 'projectUpdated';
-     const STAFF_MEMBER_UPDATE_FAILED = 'projectUpdateFailed';
-     const STAFF_MEMBER_CREATED = 'projectCreated';
-     const STAFF_MEMBER_CREATION_FAILED = 'projectCreationFailed';
+     const PROJECT_UPDATED = 'projectUpdated';
+     const PROJECT_UPDATE_FAILED = 'projectUpdateFailed';
+     const PROJECT_CREATED = 'projectCreated';
+     const PROJECT_CREATION_FAILED = 'projectCreationFailed';
      /**
       * Retrieves all projects entries at storage layer level
       * @return multitype:Project_Model_Project
@@ -64,7 +64,7 @@ class Project_Service_Project
       * Saves a project  entry at storage layer level (insert or update)
       * @param  Project_Model_Project $project
       * @throws Exception if update process failed
-      * @return  Project_Model_Project $project
+      * @return mixed const
       */
      public function save(Project_Model_Project $project)
      {
@@ -72,16 +72,16 @@ class Project_Service_Project
         if ((int)$project->getId() !== 0){
             try {
                 $projectMapper->update($project);
-                return self::STAFF_MEMBER_UPDATED;
+                return self::PROJECT_UPDATED;
             } catch (Exception $e) {
-                return self::STAFF_MEMBER_UPDATE_FAILED;
+                return self::PROJECT_UPDATE_FAILED;
             }
         } else {
             try {
                 $projectMapper->insert($project);
-                return self::STAFF_MEMBER_CREATED;
+                return self::PROJECT_CREATED;
             } catch (Exception $e) {
-                return self::STAFF_MEMBER_CREATED_FAILED;
+                return self::PROJECT_CREATED_FAILED;
             }
         }
      }
