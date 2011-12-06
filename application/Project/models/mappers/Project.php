@@ -93,49 +93,38 @@ class Project_Model_Mapper_Project
     
 	public function delete ($id) 
     {
-    	$where= 'proj_id ='.$id;
-    	$rowSet = $this->getDbTable()->fetchRow($where);
-    	
-         if ( !$rowSet->current()) {
-               return false;
-           }    	
-           
+        $where = 'proj_id =' . $id;
+        $rowSet = $this->getDbTable()->fetchRow($where);
+        if (! $rowSet->current()) {
+            return false;
+        }
         $rowSet->delete();
     }    
     
-    
-    private function insert($data) {
-    	
-    	return $this->getDbTable()->insert($data);
-    	
+    private function insert($data)
+    {
+        return $this->getDbTable()->insert($data);
     }
-    
     
     private function update ($data)
     {
-    	
     	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
-    	
     	return $this->getDbTable()->update($data, $where);
     }
     
-    
-    public function save (Project_Model_Project $project) {
-    	
-    	$data = $this->_objectToRow($project);
-    
-    if (0===(int) $data['proj_id']) {
+    public function save (Project_Model_Project $project)
+    {
+        $data = $this->_objectToRow($project);
+        if (0 === (int)$data['proj_id']) {
             unset($data['proj_id']);
             try {
-            	$this->insert($data);
+                $this->insert($data);
             } catch (Zend_Db_Table_Exception $e) {
                 throw $e;
             }
+        } else {
+            $this->update($data);
         }
-    else {
-    		$this->update($data);	
-    }
-    
     }
     
     
@@ -168,6 +157,5 @@ class Project_Model_Mapper_Project
         $projectRow['proj_docurl'] = $project->getPassword();
         
         return $projectRow;
-        
     }
 }
