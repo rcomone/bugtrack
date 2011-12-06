@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `proj_issue`;
 CREATE TABLE `proj_issue` (
   `iss_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `iss_name` varchar(45) NOT NULL,
+  `iss_desc` text NOT NULL,
   `istyp_id` tinyint(3) unsigned NOT NULL,
   `istut_id` tinyint(3) unsigned NOT NULL,
   `iss_date` int(10) unsigned NOT NULL,
