@@ -35,7 +35,7 @@
  */
  
 
-class Project_Model_Mapper_Project
+class User_Model_Mapper_Project
 {
     private $_dbTable;
     
@@ -56,9 +56,9 @@ class Project_Model_Mapper_Project
                return false;
            }
            $row = $rowSet->current();
-           $project = new Project_Model_Project();
-           $project = $this->_rowToObject($row);
-           return $project;
+           $ptoject = new Project_Model_Project();
+           $ptoject = $this->_rowToObject($row);
+           return $ptoject;
     }
     
     public function findByName($name)
@@ -113,8 +113,6 @@ class Project_Model_Mapper_Project
     
     private function update ($data)
     {
-     // $where = 'proj_id = ?';
-     // return $this->getDbTable()->update($data,array($where => $data['proj_id']));
     	
     	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
     	
