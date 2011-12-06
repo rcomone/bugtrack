@@ -14,7 +14,7 @@
  * 
  * @category       Bugtrack
  * @package        Project
- * @subpackage  Service
+ * @subpackage     Service
  * @desc           Project service layer
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
@@ -35,7 +35,6 @@
  */
 class Project_Service_Project
 {
-
      /**
       * Retrieves all projects entries at storage layer level
       * @return multitype:Project_Model_Project
@@ -85,7 +84,4 @@ class Project_Service_Project
               return false;
           }
      }
-
-     
-     
 }

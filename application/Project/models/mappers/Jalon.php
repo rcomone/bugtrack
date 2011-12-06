@@ -51,93 +51,84 @@ class Project_Model_Mapper_Jalon
     
     public function find($id)
     {
-           $rowSet = $this->getDbTable()->find((int) $id);  
-           if ( !$rowSet->current()) {
-               return false;
-           }
-           $row = $rowSet->current();
-           $project = new Project_Model_Jalon();
-           $project = $this->_rowToObject($row);
-           return $project;
+        $rowSet = $this->getDbTable()->find((int)$id);
+        if (! $rowSet->current()) {
+            return false;
+        }
+        $row = $rowSet->current();
+        $project = new Project_Model_Jalon();
+        $project = $this->_rowToObject($row);
+        return $project;
     }
     
     public function findByName($name)
     {
-           $where = 'proj_name = ?';
-           $query = $this->getDbTable()
-                                 ->select()
-                                 ->where($where, $name);
-           $rowSet = $this->getDbTable()->fetchAll($query); 
-           if ( !$rowSet->current()) {
-               return false;
-           }
-           $row = $rowSet->current();
-           $project = $this->_rowToObject($row); 
-           return $project;
+        $where = 'jal_name = ?';
+        $query = $this->getDbTable()
+            ->select()
+            ->where($where, $name);
+        $rowSet = $this->getDbTable()->fetchAll($query);
+        if (!$rowSet->current()) {
+            return false;
+        }
+        $row = $rowSet->current();
+        $jalon = $this->_rowToObject($row);
+        return $jalon;
     }
     
-    public function getList()
+    public function getList ()
     {
-           $rowSet = $this->getDbTable()->fetchAll(); 
-           if ( 0 === count($rowSet) ) {
-               return false;
-           }
-           $users = array();
-           foreach ($rowSet as $row) {
-               $project = $this->_rowToObject($row);
-               $projects[] = $project;
-           }
-           return $projects;
+        $rowSet = $this->getDbTable()->fetchAll();
+        if (0 === count($rowSet)) {
+            return false;
+        }
+        $users = array();
+        foreach ($rowSet as $row) {
+            $jalon = $this->_rowToObject($row);
+            $jalons[] = $jalon;
+        }
+        return $jalons;
     }
     
-    
-	public function delete ($id) 
+    public function delete ($id)
     {
-    	$where= 'proj_id ='.$id;
-    	$rowSet = $this->getDbTable()->fetchRow($where);
-    	
-         if ( !$rowSet->current()) {
-               return false;
-           }    	
-           
+        $where = 'jal_id =' . $id;
+        $rowSet = $this->getDbTable()->fetchRow($where);
+        if (! $rowSet->current()) {
+            return false;
+        }
         $rowSet->delete();
     }    
     
-    
-    private function insert($data) {
+    private function insert($data)
+    {
     	
     	return $this->getDbTable()->insert($data);
     	
     }
     
-    
-    private function update ($data)
+    private function update($data)
     {
-    	
-    	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
-    	
-    	return $this->getDbTable()->update($data, $where);
+        $where = $this->getDbTable()
+            ->getAdapter()
+            ->quoteInto('jal_id = ?', $data['jal_id']);
+        return $this->getDbTable()->update($data, $where);
     }
     
-    
-    public function save (Project_Model_Project $project) {
-    	
-    	$data = $this->_objectToRow($project);
-    
-    if (0===(int) $data['proj_id']) {
-            unset($data['proj_id']);
+    public function save(Project_Model_Jalon $jalon)
+    {
+        $data = $this->_objectToRow($jalon);
+        if (0 === (int) $data['jal_id']) {
+            unset($data['jal_id']);
             try {
-            	$this->insert($data);
+                $this->insert($data);
             } catch (Zend_Db_Table_Exception $e) {
                 throw $e;
             }
+        } else {
+            $this->update($data);
         }
-    else {
-    		$this->update($data);	
     }
-    
-    }
-    
     
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
@@ -154,5 +145,15 @@ class Project_Model_Mapper_Jalon
 			   ->setProject($project);
 		return $jalon;
     }
-   
+
+    private function _objectToRow(Project_Model_Jalon $jalon)
+    {
+    	$jalonRow['jal_id'] = $jalon->getId();
+    	$jalonRow['jal_name'] = $jalon->getName();
+    	$jalonRow['jal_description'] = $jalon->getDescription();
+    	$jalonRow['jal_date'] = $jalon->getDate();
+    	$jalonRow['proj_id'] = $jalon->getProject()->getId();
+    	
+    	return $jalonRow;
+    }
 }
