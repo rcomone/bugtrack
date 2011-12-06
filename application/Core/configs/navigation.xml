@@ -21,7 +21,7 @@
        </TeamList>
        
        <CreateList>
-           <label>Create list</label>
+           <label>Create user</label>
            <route>CreateList</route>     
        </CreateList>
        
