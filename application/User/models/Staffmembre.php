@@ -196,6 +196,14 @@ class User_Model_Staffmembre
         return $this;
     }
 
+    public function toArray() 
+    {
+        $userRow['id'] = $this->getId();
+        $userRow['firstname'] = $this->getFirstname();
+        $userRow['lastname'] = $this->getLastname();
+        $userRow['email'] = $this->getEmail();
+        return $userRow;
+    }
     
     
 }

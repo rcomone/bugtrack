@@ -69,7 +69,7 @@ class User_Service_Staffmembre
      public function save(User_Model_Staffmembre $user)
      {
 		$userMapper = new User_Model_Mapper_Staffmembre();
-		$userMapper->save($user);
+		return $userMapper->save($user);
      }
      
      /**
@@ -110,6 +110,17 @@ class User_Service_Staffmembre
      {
           $userMapper = new User_Model_Mapper_Staffmembre();
           return $userMapper->findByLogin($login);
+     }
+     
+     /**
+      * Retrieves a user given its idn at storage layer level
+      * @param integer $id
+      * @return User_Model_Staffmembre|boolean
+      */
+     public function find($id)
+     {
+          $userMapper = new User_Model_Mapper_Staffmembre();
+          return $userMapper->find($id);
      }
      
      /**

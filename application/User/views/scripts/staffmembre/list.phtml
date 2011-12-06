@@ -10,7 +10,7 @@
       	echo $staffmembre->getTeam()->getName() ;
       }
       ?></td>
-      <td><a href="#" title="Modifier l'Utilisateur"><img src="../img/modif.png"/></a></td>
+      <td><a href="<?php echo $this->url(array('id' => $staffmembre->getId() ), 'UserEdit') ?>" title="Modifier l'Utilisateur"><img src="../img/modif.png"/></a></td>
       <td><a href="#" title="Supprimer l'Utilisateur"><img src="../img/error.png"/></a></td>
   </tr>
 <?php endforeach;?>

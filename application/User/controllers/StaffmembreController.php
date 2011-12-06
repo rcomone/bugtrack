@@ -63,6 +63,34 @@ class User_StaffmembreController extends Zend_Controller_Action
 			 
 		$this->view->saveForm = $form;
     }
+    
+    public function editAction()
+    {
+        $userId = (int) $this->getRequest('id');
+        if (0===$userId) {
+            throw new Zend_Controller_Exception('No user');
+        }
+        
+        $userService = new User_Service_Staffmembre();
+        $user = $userService->find($userId);
+
+        if ($this->getRequest()->isPost()) {
+            $updatedUser = clone $user;
+            $updatedUser->setFirstname($this->getRequest()->getParam('firstname'))
+                                 ->setLastname($this->getRequest()->getParam('lastname'))
+                                 ->setEmail($this->getRequest()->getParam('email'));                                 
+            
+            if ($userService->save($updatedUser)) {
+                    echo 'ok'; exit;
+            } else {
+                    echo 'erreur';exit;
+            }
+        } else {
+            $form = new User_Form_Save();
+            $form->populate($user->toArray());
+            $this->view->form = $form;
+        }
+    }
 
 	public function teamlistAction()
     {

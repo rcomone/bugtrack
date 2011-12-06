@@ -51,6 +51,7 @@ class User_Model_Mapper_Staffmembre
     
     public function find($id)
     {
+        
            $rowSet = $this->getDbTable()->find((int) $id);  
            if ( !$rowSet->current()) {
                return false;
@@ -109,7 +110,7 @@ class User_Model_Mapper_Staffmembre
                 $where = 'usm_id = ' .$userOld->getId();
            		return $this->getDbTable()->update($data, $where);  
             } catch (Zend_Db_Table_Exception $e) {
-                echo $e->getMessage();
+                 throw $e;
             }    
                       
         }
