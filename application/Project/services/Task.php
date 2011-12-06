@@ -80,7 +80,7 @@ class Project_Service_Task
           $taskFind = new Project_Model_Mapper_Task();
           
           if ((int) $taskId !== 0) {
-             $task = $issueFind->find((int) $taskId);
+             $task = $taskFind ->find((int) $taskId);
              return $task;
           } else {
               return false;
