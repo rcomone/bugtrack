@@ -36,104 +36,109 @@
  
 class Project_Model_Jalon
 {
-	/**
-	 * Jalon's ref (formerly DB primary key)
-	 * @var int
-	 */
-	private $_id;
-	
-	/**
-	 * Jalon's name
-	 * @var string
-	 */
-	private $_name;
-	
-	/**
-	 * Jalon's description
-	 * @var string
-	 */
-	private $_description;
-	
-	/**
-	 * Jalon's creation date
-	 * @var int epoch
-	 */
-	private $_date;
-	
-	/**
-	 * Project's jalon
-	 * @var Project_Model_Project
-	 */
-	private $_project;
-	
-	/**
-	 * @return the $_id
-	 */
-	public function getId() {
-		return $this->_id;
-	}
+    /**
+     * Jalon's ref (formerly DB primary key)
+     * @var int
+     */
+    private $_id;
+    
+    /**
+     * Jalon's name
+     * @var string
+     */
+    private $_name;
+    
+    /**
+     * Jalon's description
+     * @var string
+     */
+    private $_description;
+    
+    /**
+     * Jalon's creation date
+     * @var int epoch
+     */
+    private $_date;
+    
+    /**
+     * Project's jalon
+     * @var Project_Model_Project
+     */
+    private $_project;
+    
+    /**
+     * @return the $_id
+     */
+    public function getId() {
+        return $this->_id;
+    }
 
-	/**
-	 * @param int $_id
-	 */
-	public function setId($_id) {
-		$this->_id = $_id;
-	}
+    /**
+     * @param int $_id
+     */
+    public function setId($_id) {
+        $this->_id = $_id;
+        return $this;
+    }
 
-	/**
-	 * @return the $_name
-	 */
-	public function getName() {
-		return $this->_name;
-	}
+    /**
+     * @return the $_name
+     */
+    public function getName() {
+        return $this->_name;
+    }
 
-	/**
-	 * @param string $_name
-	 */
-	public function setName($_name) {
-		$this->_name = $_name;
-	}
+    /**
+     * @param string $_name
+     */
+    public function setName($_name) {
+        $this->_name = $_name;
+        return $this;
+    }
 
-	/**
-	 * @return the $_description
-	 */
-	public function getDescription() {
-		return $this->_description;
-	}
+    /**
+     * @return the $_description
+     */
+    public function getDescription() {
+        return $this->_description;
+    }
 
-	/**
-	 * @param string $_description
-	 */
-	public function setDescription($_description) {
-		$this->_description = $_description;
-	}
+    /**
+     * @param string $_description
+     */
+    public function setDescription($_description) {
+        $this->_description = $_description;
+        return $this;
+    }
 
-	/**
-	 * @return the $_date
-	 */
-	public function getDate() {
-		return $this->_date;
-	}
+    /**
+     * @return the $_date
+     */
+    public function getDate() {
+        return $this->_date;
+    }
 
-	/**
-	 * @param int $_date
-	 */
-	public function setDate($_date) {
-		$this->_date = $_date;
-	}
+    /**
+     * @param int $_date
+     */
+    public function setDate($_date) {
+        $this->_date = $_date;
+        return $this;
+    }
 
-	/**
-	 * @return the $_project
-	 */
-	public function getProject() {
-		return $this->_project;
-	}
+    /**
+     * @return the $_project
+     */
+    public function getProject() {
+        return $this->_project;
+        return $this;
+    }
 
-	/**
-	 * @param Project_Model_Project $_project
-	 */
-	public function setProject(Project_Model_Project $_project) {
-		$this->_project = $_project;
-	}
-
+    /**
+     * @param Project_Model_Project $_project
+     */
+    public function setProject(Project_Model_Project $_project) {
+        $this->_project = $_project;
+        return $this;
+    }
 }

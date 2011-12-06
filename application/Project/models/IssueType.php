@@ -37,43 +37,45 @@
  
 class Project_Model_IssueType
 {
-	/**
-	 * IssueType's Type (formerly DB primary key)
-	 * @var int
-	 */
-	private $_id;
-	
-	/**
-	 * IssueType's title
-	 * @var string
-	 */
-	private $_title;
-	
-	/**
-	 * @return the $_id
-	 */
-	public function getId() {
-		return $this->_id;
-	}
+    /**
+     * IssueType's Type (formerly DB primary key)
+     * @var int
+     */
+    private $_id;
+    
+    /**
+     * IssueType's title
+     * @var string
+     */
+    private $_title;
+    
+    /**
+     * @return the $_id
+     */
+    public function getId() {
+        return $this->_id;
+    }
 
-	/**
-	 * @param int $_id
-	 */
-	public function setId($_id) {
-		$this->_id = $_id;
-	}
+    /**
+     * @param int $_id
+     */
+    public function setId($_id) {
+        $this->_id = $_id;
+        return $this;
+    }
 
-	/**
-	 * @return the $_title
-	 */
-	public function getTitle() {
-		return $this->_title;
-	}
+    /**
+     * @return the $_title
+     */
+    public function getTitle() {
+        return $this->_title;
+    }
 
-	/**
-	 * @param string $_title
-	 */
-	public function setTitle($_title) {
-		$this->_title = $_title;
-	}
+    /**
+     * @param string $_title
+     */
+    public function setTitle($_title) {
+        $this->_title = $_title;
+        return $this;
+    }
 }
