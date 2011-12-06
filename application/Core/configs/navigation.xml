@@ -21,8 +21,9 @@
        </TeamList>
        
        <CreateList>
-           <label>Create list</label>
-           <route>CreateList</route>     
+           <label>Create user</label>
+           <route>CreateList</route>
+           <visible>0</visible>  
        </CreateList>
        
        <UsersAuth>

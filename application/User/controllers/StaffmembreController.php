@@ -36,6 +36,11 @@
 class User_StaffmembreController extends Zend_Controller_Action
 {
     
+	protected $_redirector = null;
+	public function init(){
+		$this->_redirector = $this->_helper->getHelper('Redirector');
+	}
+	
     public function listAction()
     {
         $service = new User_Service_Staffmembre();
@@ -86,7 +91,7 @@ class User_StaffmembreController extends Zend_Controller_Action
             //print_r($this->getRequest()->getParam('id'));   exit;                   
             //print_r($updatedUser); exit;
             $userService->save($updatedUser);
-
+			$this->_redirector->gotoUrl('/user/list');
         } else {
         	
             $form = new User_Form_Save();            
