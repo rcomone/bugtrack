@@ -56,9 +56,9 @@ class Project_Model_Mapper_Project
                return false;
            }
            $row = $rowSet->current();
-           $project = new Project_Model_Project();
-           $project = $this->_rowToObject($row);
-           return $project;
+           $ptoject = new Project_Model_Project();
+           $ptoject = $this->_rowToObject($row);
+           return $ptoject;
     }
     
     public function findByName($name)
@@ -90,6 +90,55 @@ class Project_Model_Mapper_Project
            return $projects;
     }
     
+    
+	public function delete ($id) 
+    {
+    	$where= 'proj_id ='.$id;
+    	$rowSet = $this->getDbTable()->fetchRow($where);
+    	
+         if ( !$rowSet->current()) {
+               return false;
+           }    	
+           
+        $rowSet->delete();
+    }    
+    
+    
+    private function insert($data) {
+    	
+    	return $this->getDbTable()->insert($data);
+    	
+    }
+    
+    
+    private function update ($data)
+    {
+    	
+    	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
+    	
+    	return $this->getDbTable()->update($data, $where);
+    }
+    
+    
+    public function save (Project_Model_Project $project) {
+    	
+    	$data = $this->_objectToRow($project);
+    
+    if (0===(int) $data['proj_id']) {
+            unset($data['proj_id']);
+            try {
+            	$this->insert($data);
+            } catch (Zend_Db_Table_Exception $e) {
+                throw $e;
+            }
+        }
+    else {
+    		$this->update($data);	
+    }
+    
+    }
+    
+    
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
     	$userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
@@ -106,5 +155,19 @@ class Project_Model_Mapper_Project
 				->setDocUrl($row->proj_docurl)
 				->setUser($user);
 		return $project;
+    }
+    
+ 	private function _objectToRow(Project_Model_Project $project)
+    {
+        $projectRow['proj_id'] = $project->getId();
+        $projectRow['proj_name'] = $project->getFirstname();
+        $projectRow['proj_desc'] = $project->getLastname();
+        $projectRow['proj_date'] = $project->getEmail();
+        $projectRow['proj_statut'] = $project->getLogin();
+        $projectRow['proj_hpurl'] = $project->getPassword();
+        $projectRow['proj_docurl'] = $project->getPassword();
+        
+        return $projectRow;
+        
     }
 }
