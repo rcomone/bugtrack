@@ -56,9 +56,9 @@ class Project_Model_Mapper_Task
                return false;
            }
            $row = $rowSet->current();
-           $ptoject = new Project_Model_Project();
-           $ptoject = $this->_rowToObject($row);
-           return $ptoject;
+           $project = new Project_Model_Task();
+           $project = $this->_rowToObject($row);
+           return $project;
     }
     
     public function findByName($name)
@@ -72,8 +72,8 @@ class Project_Model_Mapper_Task
                return false;
            }
            $row = $rowSet->current();
-           $project = $this->rowToObject($row); 
-           return $project;
+           $task = $this->rowToObject($row); 
+           return $task;
     }
     
     public function getList()
@@ -84,10 +84,10 @@ class Project_Model_Mapper_Task
            }
            $users = array();
            foreach ($rowSet as $row) {
-               $project = $this->rowToObject($row);
-               $projects[] = $project;
+               $task = $this->rowToObject($row);
+               $tasks[] = $task;
            }
-           return $projects;
+           return $tasks;
     }
     
     
@@ -114,18 +114,20 @@ class Project_Model_Mapper_Task
     private function update ($data)
     {
     	
-    	$where = $this->getDbTable()->getAdapter()->quoteInto('tsk_id = ?', $data['tsk_id']);
+    	$where = $this->getDbTable()
+    		->getAdapter()
+    		->quoteInto('tsk_id = ?', $data['tsk_id']);
     	
     	return $this->getDbTable()->update($data, $where);
     }
     
     
-    public function save (Project_Model_Project $project) {
+    public function save (Project_Model_Task $task) {
     	
-    	$data = $this->_objectToRow($project);
+    	$data = $this->_objectToRow($task);
     
-    if (0===(int) $data['tsk_id']) {
-            unset($data['tsk_id']);
+    if (0===(int) $data['task_id']) {
+            unset($data['task_id']);
             try {
             	$this->insert($data);
             } catch (Zend_Db_Table_Exception $e) {
@@ -138,7 +140,7 @@ class Project_Model_Mapper_Task
     
     }
     
-    
+   
     public function rowToObject(Zend_Db_Table_Row $row)
     {
     	$taskRow = $row->findParentRow('Project_Model_TaskStatus', 'TaskStatus');
