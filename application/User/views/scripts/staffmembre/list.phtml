@@ -5,7 +5,15 @@
       <td><?php echo $staffmembre->getFirstname() ?></td>
       <td><?php echo $staffmembre->getLastname() ?></td>
       <td><?php echo $staffmembre->getEmail() ?></td>
-      <td><?php echo $staffmembre->getTeam()->getName() ?></td>
+      <td><?php        
+      if( $staffmembre->getTeam() instanceof User_Model_Team) {
+      	echo $staffmembre->getTeam()->getName() ;
+      }
+      ?></td>
+      <td><a href="<?php echo $this->url(array('id' => $staffmembre->getId() ), 'UserEdit') ?>" title="Modifier l'Utilisateur"><img src="../img/modif.png"/></a></td>
+      <td><a href="#" title="Supprimer l'Utilisateur"><img src="../img/error.png"/></a></td>
   </tr>
 <?php endforeach;?>
 </table>
+
+<p><a href="/user/staffmembre/insert" title="create"><img src="../img/add.png" title="ajouter un Utilisateur" /></a></p>

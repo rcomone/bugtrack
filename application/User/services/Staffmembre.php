@@ -68,6 +68,7 @@ class User_Service_Staffmembre
       */
      public function save(User_Model_Staffmembre $user)
      {
+
          try {
                   $userMapper = new User_Model_Mapper_Staffmembre();
                   $userMapper->save($user);
@@ -75,6 +76,7 @@ class User_Service_Staffmembre
          } catch (Exception $e) {
                   return self::STAFF_MEMBER_CREATION_FAILED;
          }
+
      }
      
      /**
@@ -118,6 +120,17 @@ class User_Service_Staffmembre
      }
      
      /**
+      * Retrieves a user given its idn at storage layer level
+      * @param integer $id
+      * @return User_Model_Staffmembre|boolean
+      */
+     public function find($id)
+     {
+          $userMapper = new User_Model_Mapper_Staffmembre();
+          return $userMapper->find($id);
+     }
+     
+     /**
       * @return boolean
       */
      public function logout()
@@ -137,7 +150,7 @@ class User_Service_Staffmembre
      {
          return Zend_Auth::getInstance()->hasIdentity();
      }
-     
+      
      public function getTeamList()
      {
          $teamMapper = new User_Model_Mapper_Team();

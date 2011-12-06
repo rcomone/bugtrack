@@ -36,21 +36,75 @@
 class User_StaffmembreController extends Zend_Controller_Action
 {
     
+	protected $_redirector = null;
+	public function init(){
+		$this->_redirector = $this->_helper->getHelper('Redirector');
+	}
+	
     public function listAction()
     {
         $service = new User_Service_Staffmembre();
         $this->view->staffmembres = $service->getList();
+
+    }
+
+     
+    public function insertAction(){
+		$form = new User_Form_Save();
+
+			if ($this->getRequest()->isPost()) {
+				if ($form->isValid($_POST)) {
+					$this->userService = new User_Service_Staffmembre();
+					$user = new User_Model_Staffmembre();
+					
+					$user->setFirstname($form->getValue('firstname'));
+					$user->setLastname($form->getValue('lastname'));
+					$user->setEmail($form->getValue('email'));
+					$user->setLogin($form->getValue('login'));
+					$user->setPassword($form->getValue('password'));
+										
+					$this->userService->save($user);
+				}
+			}
+			 
+		$this->view->saveForm = $form;
     }
     
-    public function insertAction()
+    public function editAction()
     {
-        $user = new User_Model_Staffmembre();
-        $user->setId(4)
-                ->setFirstname('testInsert')
-                ->setLastname('testInsert')
-                ->setLogin('testInsert')
-                ->setEmail('testInsert');
-        $service = new User_Service_Staffmembre();
-        $service->save($user);
+        $userId = (int) $this->getRequest()->getParam('id');
+        if (NULL===$userId) {
+            throw new Zend_Controller_Exception('No user');
+        }
+        
+        $userService = new User_Service_Staffmembre();
+        $user = $userService->find($userId);
+		
+        if ($this->getRequest()->isPost()) {
+
+            $updatedUser = clone $user;
+            $updatedUser->setFirstname($this->getRequest()->getParam('firstname'))
+                                 ->setLastname($this->getRequest()->getParam('lastname'))
+                                 ->setEmail($this->getRequest()->getParam('email'))
+                                 ->setLogin($this->getRequest()->getParam('login'))
+                                 ->setPassword($this->getRequest()->getParam('password'))
+                                 ->setId($this->getRequest()->getParam('id'));     
+            //print_r($this->getRequest()->getParam('id'));   exit;                   
+            //print_r($updatedUser); exit;
+            $userService->save($updatedUser);
+			$this->_redirector->gotoUrl('/user/list');
+        } else {
+        	
+            $form = new User_Form_Save();            
+            $form->populate($user->toArray());
+            $this->view->editForm = $form;
+        }
     }
+
+	public function teamlistAction()
+    {
+        $service = new User_Service_Staffmembre();
+        $this->view->staffteams = $service->getTeamList();
+    }
+
 }
