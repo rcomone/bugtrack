@@ -66,7 +66,6 @@ class Project_Service_Project
      public function save(Project_Model_Project $project)
      {
           $projectSave = new Project_Model_Mapper_Project();
-
 		  $projectSave->save($project);
      }
      
