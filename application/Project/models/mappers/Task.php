@@ -63,7 +63,7 @@ class Project_Model_Mapper_Task
     
     public function findByName($name)
     {
-           $where = 'proj_name = ?';
+           $where = 'tsk_name = ?';
            $query = $this->getDbTable()
                                  ->select()
                                  ->where($where, $name);
@@ -93,7 +93,7 @@ class Project_Model_Mapper_Task
     
 	public function delete ($id) 
     {
-    	$where= 'proj_id ='.$id;
+    	$where= 'tsk_id ='.$id;
     	$rowSet = $this->getDbTable()->fetchRow($where);
     	
          if ( !$rowSet->current()) {
@@ -114,7 +114,7 @@ class Project_Model_Mapper_Task
     private function update ($data)
     {
     	
-    	$where = $this->getDbTable()->getAdapter()->quoteInto('proj_id = ?', $data['proj_id']);
+    	$where = $this->getDbTable()->getAdapter()->quoteInto('tsk_id = ?', $data['tsk_id']);
     	
     	return $this->getDbTable()->update($data, $where);
     }
@@ -124,8 +124,8 @@ class Project_Model_Mapper_Task
     	
     	$data = $this->_objectToRow($project);
     
-    if (0===(int) $data['proj_id']) {
-            unset($data['proj_id']);
+    if (0===(int) $data['tsk_id']) {
+            unset($data['tsk_id']);
             try {
             	$this->insert($data);
             } catch (Zend_Db_Table_Exception $e) {
