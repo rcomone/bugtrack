@@ -68,6 +68,12 @@ class Project_Model_Issue
 	private $_date;
 	
 	/**
+	 * Issue's description
+	 * @var string
+	 */
+	private $_description;
+	
+	/**
 	 * Issue's user creator
 	 * @var User_Model_Staffmembre
 	 */
@@ -143,10 +149,24 @@ class Project_Model_Issue
 	}
 
 	/**
-	 * @param unknown_type $_date
+	 * @param int $_date
 	 */
 	public function setDate($_date) {
 		$this->_date = $_date;
+	}
+
+	/**
+	 * @return the $_description
+	 */
+	public function getDescription() {
+		return $this->_description;
+	}
+
+	/**
+	 * @param string $_description
+	 */
+	public function setDescription($_description) {
+		$this->_description = $_description;
 	}
 
 	/**
