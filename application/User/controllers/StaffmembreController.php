@@ -41,4 +41,16 @@ class User_StaffmembreController extends Zend_Controller_Action
         $service = new User_Service_Staffmembre();
         $this->view->staffmembres = $service->getList();
     }
+    
+    public function insertAction()
+    {
+        $user = new User_Model_Staffmembre();
+        $user->setId(4)
+                ->setFirstname('testInsert')
+                ->setLastname('testInsert')
+                ->setLogin('testInsert')
+                ->setEmail('testInsert');
+        $service = new User_Service_Staffmembre();
+        $service->save($user);
+    }
 }

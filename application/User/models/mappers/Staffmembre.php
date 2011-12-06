@@ -90,6 +90,27 @@ class User_Model_Mapper_Staffmembre
            return $users;
     }
     
+    public function save(User_Model_Staffmembre $user) 
+    {
+       
+        $data = $this->_objectToRow($user);
+        
+        if (0===(int) $data['usm_id']) {
+            unset($data['usm_id']);
+            try  {
+                return $this->getDbTable()->insert($data);
+            } catch (Zend_Db_Table_Exception $e) {
+                throw $e;
+            }
+        } else {
+            $where = $this->getDbTable()
+                ->getAdapter()
+                ->quoteInto('usm_id = ?', $user->getId());
+           $result = $this->getDbTable()
+                               ->update($data, $where);
+          
+        }
+    }
     private function _rowToObject(Zend_Db_Table_Row $row)
     {
            $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');
@@ -104,5 +125,22 @@ class User_Model_Mapper_Staffmembre
                    ->setLogin($row->usm_login)
                    ->setTeam($team);
            return $user;
+    }
+    
+    private function _objectToRow(User_Model_Staffmembre $user)
+    {
+        
+        $userRow['usm_id'] = $user->getId();
+        $userRow['usm_firstname'] = $user->getFirstname();
+        $userRow['usm_lastname'] = $user->getLastname();
+        $userRow['usm_email'] = $user->getEmail();
+        $userRow['usm_login'] = $user->getLogin();
+        $userRow['usm_password'] = $user->getPassword();
+        $userRow['ut_id'] = 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
+        if( $user->getTeam() instanceof User_Model_Team) {
+            $userRow['ut_id'] = $user->getTeam()->getId();
+        }
+        return $userRow;
+        
     }
 }
