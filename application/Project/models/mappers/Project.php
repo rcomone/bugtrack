@@ -35,7 +35,7 @@
  */
  
 
-class User_Model_Mapper_Project
+class Project_Model_Mapper_Project
 {
     private $_dbTable;
     
@@ -56,9 +56,9 @@ class User_Model_Mapper_Project
                return false;
            }
            $row = $rowSet->current();
-           $ptoject = new Project_Model_Project();
-           $ptoject = $this->_rowToObject($row);
-           return $ptoject;
+           $project = new Project_Model_Project();
+           $project = $this->_rowToObject($row);
+           return $project;
     }
     
     public function findByName($name)
