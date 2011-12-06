@@ -15,7 +15,7 @@
  * @category       Bugtrack
  * @package        Project
  * @subpackage     Model
- * @desc           Jalon data mapper
+ * @desc           Task data mapper
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
  * @license        http://framework.zend.com/new-bsd   New BSD License
@@ -26,7 +26,7 @@
  * @category       Bugtrack
  * @package        Project
  * @subpackage     Model
- * @desc           Jalon data mapper
+ * @desc           Task data mapper
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
  * @license        http://framework.zend.com/new-bsd   New BSD License
@@ -35,13 +35,13 @@
  */
  
 
-class Project_Model_Mapper_Jalon
+class Project_Model_Mapper_Task
 {
     private $_dbTable;
     
     public function __construct()
     {
-        $this->_dbTable = new Project_Model_DbTable_Jalon();
+        $this->_dbTable = new Project_Model_DbTable_Task();
     }
     
     public function getDbTable()
@@ -56,9 +56,9 @@ class Project_Model_Mapper_Jalon
                return false;
            }
            $row = $rowSet->current();
-           $project = new Project_Model_Jalon();
-           $project = $this->_rowToObject($row);
-           return $project;
+           $ptoject = new Project_Model_Project();
+           $ptoject = $this->_rowToObject($row);
+           return $ptoject;
     }
     
     public function findByName($name)
@@ -72,7 +72,7 @@ class Project_Model_Mapper_Jalon
                return false;
            }
            $row = $rowSet->current();
-           $project = $this->_rowToObject($row); 
+           $project = $this->rowToObject($row); 
            return $project;
     }
     
@@ -84,7 +84,7 @@ class Project_Model_Mapper_Jalon
            }
            $users = array();
            foreach ($rowSet as $row) {
-               $project = $this->_rowToObject($row);
+               $project = $this->rowToObject($row);
                $projects[] = $project;
            }
            return $projects;
@@ -139,20 +139,26 @@ class Project_Model_Mapper_Jalon
     }
     
     
-    private function _rowToObject(Zend_Db_Table_Row $row)
+    public function rowToObject(Zend_Db_Table_Row $row)
     {
-    	$projectRow = $row->findParentRow('Project_Model_DbTable_Project', 'Project');
-    	$projectMapper = new Project_Model_Mapper_Project();
-        $project = new Project_Model_Project();
-        $project = $projectMapper->rowToObject($projectRow);
+    	$taskRow = $row->findParentRow('Project_Model_TaskStatus', 'TaskStatus');
+        $status = new Project_Model_Mapper_Task();
+        $status ->setId($taskRow->tskstu_id);
         
-        $jalon = new Project_Model_Jalon();
-        $jalon->setId($row->jal_id)
-			   ->setName($row->jal_name)
+        $userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
+        $user = new User_Model_Staffmembre();
+        $user->setId($userRow->usm_id);
+        
+        $task = new Project_Model_Task();
+        $task->setId($row->tsk_id)
+			   ->setName($row->tsk_name)
 			   ->setDescription($row->jal_description)
-			   ->setDate($row->jal_date)
-			   ->setProject($project);
-		return $jalon;
+			   ->setDate($row->tsk_date)
+			   ->setExpectedDate($row->tsk_expectDate)
+			   ->setDescription($row->tsk_desc)
+			   ->setStatus($status)
+			   ->setUser($user); 
+		return $task;
     }
-   
+    
 }
