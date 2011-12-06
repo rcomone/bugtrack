@@ -26,7 +26,11 @@ CREATE TABLE `project` (
   `proj_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `proj_name` varchar(45) NOT NULL,
   `proj_desc` text NOT NULL,
+<<<<<<< HEAD
+  `proj_date` int(10) NOT NULL,
+=======
   `proj_date` int(10) unsigned NOT NULL,
+>>>>>>> eb0194d1701ffa4341930d5379710c30e9913182
   `proj_statut` varchar(45) NOT NULL,
   `proj_hpurl` varchar(155) NOT NULL,
   `proj_docurl` varchar(155) NOT NULL,
@@ -55,4 +59,12 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+-- Dump completed on 2011-12-05 14:51:00
+=======
+-- Dump completed on 2011-12-05 14:58:49
+>>>>>>> 262d4ba47826423dea6d0888285e502dcd1840ac
+=======
 -- Dump completed on 2011-12-05 17:13:18
+>>>>>>> eb0194d1701ffa4341930d5379710c30e9913182
