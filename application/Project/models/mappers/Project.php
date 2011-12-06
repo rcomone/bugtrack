@@ -72,7 +72,7 @@ class Project_Model_Mapper_Project
                return false;
            }
            $row = $rowSet->current();
-           $project = $this->_rowToObject($row); 
+           $project = $this->rowToObject($row); 
            return $project;
     }
     
@@ -84,7 +84,7 @@ class Project_Model_Mapper_Project
            }
            $users = array();
            foreach ($rowSet as $row) {
-               $project = $this->_rowToObject($row);
+               $project = $this->rowToObject($row);
                $projects[] = $project;
            }
            return $projects;
@@ -139,7 +139,7 @@ class Project_Model_Mapper_Project
     }
     
     
-    private function _rowToObject(Zend_Db_Table_Row $row)
+    public function rowToObject(Zend_Db_Table_Row $row)
     {
     	$userRow = $row->findParentRow('User_Model_DbTable_Staffmembre', 'Staffmembre');
         $user = new User_Model_Staffmembre();
