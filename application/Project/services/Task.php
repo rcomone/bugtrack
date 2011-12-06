@@ -54,7 +54,7 @@ class Project_Service_Task
      public function delete(Project_Model_Task $task)
      {
          $taskDelete = new Project_Model_Mapper_Issue();
-         return $IssueDelete->delete($issue);
+         return $taskDelete->delete($task);
      }
      
      /**
