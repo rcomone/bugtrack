@@ -20,6 +20,8 @@ class User_Form_Save extends Zend_Form
         $loginField->addValidator(new Zend_Validate_Alnum());
         $loginField->setRequired(true);
         
+        $idField = new Zend_Form_Element_Text('id');
+        
         $passwordField = new Zend_Form_Element_Password('password');
         $passwordField->addValidator(new Zend_Validate_StringLength(
             array('min' => 6, 'max' => 18)
@@ -29,10 +31,10 @@ class User_Form_Save extends Zend_Form
         $submitBtn = new Zend_Form_Element_Submit('submit');
         
         $this->addElements(
-            array($firstnameField, $lastnameField, $emailField, $loginField, $passwordField, $submitBtn)
+            array($firstnameField, $lastnameField, $emailField, $loginField, $passwordField, $idField, $submitBtn)
         );
         
-        $this->setAction('/User/Staffmembre/insert');
+        $this->setAction('');
 
     }
     

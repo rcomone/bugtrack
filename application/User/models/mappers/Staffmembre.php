@@ -91,14 +91,14 @@ class User_Model_Mapper_Staffmembre
            return $users;
     }
     
-    public function save(User_Model_Staffmembre $userIn) 
+    public function save(User_Model_Staffmembre $user) 
     {
-		$userOld = $this->findByLogin($userIn->getLogin());
-    	$data = $this->_objectToRow($userIn);
-		unset($data['usm_id']);
+    	
+    	
+		$data = $this->_objectToRow($user);
 
-        if (!$userOld instanceof User_Model_Staffmembre) {
-
+        if ($data['usm_id'] == NULL || $data['usm_id'] == '') {
+			unset($data['usm_id']);
             try  {
                 return $this->getDbTable()->insert($data);
             } catch (Zend_Db_Table_Exception $e) {
@@ -108,8 +108,7 @@ class User_Model_Mapper_Staffmembre
         } else {
         	
         	try  {
-                $where = 'usm_id = ' .$userOld->getId();
-                print_r($data).'   '; echo $where; exit;
+                $where = 'usm_id = ' .$data['usm_id'];
            		return $this->getDbTable()->update($data, $where);  
             } catch (Zend_Db_Table_Exception $e) {
                  throw $e;

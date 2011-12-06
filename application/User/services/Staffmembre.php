@@ -68,6 +68,7 @@ class User_Service_Staffmembre
       */
      public function save(User_Model_Staffmembre $user)
      {
+     	//print_r($user); exit;
 		$userMapper = new User_Model_Mapper_Staffmembre();
 		return $userMapper->save($user);
      }

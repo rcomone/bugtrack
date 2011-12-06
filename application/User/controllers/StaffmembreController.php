@@ -73,19 +73,22 @@ class User_StaffmembreController extends Zend_Controller_Action
         
         $userService = new User_Service_Staffmembre();
         $user = $userService->find($userId);
-
+		
         if ($this->getRequest()->isPost()) {
+
             $updatedUser = clone $user;
             $updatedUser->setFirstname($this->getRequest()->getParam('firstname'))
                                  ->setLastname($this->getRequest()->getParam('lastname'))
-                                 ->setEmail($this->getRequest()->getParam('email'));                                 
-            
-            if ($userService->save($updatedUser)) {
-                    echo 'ok'; exit;
-            } else {
-                    echo 'erreur';exit;
-            }
+                                 ->setEmail($this->getRequest()->getParam('email'))
+                                 ->setLogin($this->getRequest()->getParam('login'))
+                                 ->setPassword($this->getRequest()->getParam('password'))
+                                 ->setId($this->getRequest()->getParam('id'));     
+            //print_r($this->getRequest()->getParam('id'));   exit;                   
+            //print_r($updatedUser); exit;
+            $userService->save($updatedUser);
+
         } else {
+        	
             $form = new User_Form_Save();            
             $form->populate($user->toArray());
             $this->view->saveForm = $form;
