@@ -47,9 +47,10 @@ class User_StaffmembreController extends Zend_Controller_Action
         $this->view->staffmembres = $service->getList();
 
     }
+
      
     public function insertAction(){
-		$form = new User_Form_Save();
+		$form = new User_Form_Insert();
 
 			if ($this->getRequest()->isPost()) {
 				if ($form->isValid($_POST)) {
@@ -94,12 +95,29 @@ class User_StaffmembreController extends Zend_Controller_Action
 			$this->_redirector->gotoUrl('/user/list');
         } else {
         	
-            $form = new User_Form_Save();            
+            $form = new User_Form_Edit();            
             $form->populate($user->toArray());
             $this->view->editForm = $form;
         }
     }
 
+    
+    public function deleteAction()
+    {
+		
+    	$userId = (int) $this->getRequest()->getParam('id');
+        if (NULL===$userId) {
+            throw new Zend_Controller_Exception('No user');
+        }
+        
+        $userService = new User_Service_Staffmembre();
+        $user = $userService->find($userId);
+        
+        $userService->delete($user);
+		$this->_redirector->gotoUrl('/user/list');
+    }
+    
+    
 	public function teamlistAction()
     {
         $service = new User_Service_Staffmembre();

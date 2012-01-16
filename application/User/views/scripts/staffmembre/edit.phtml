@@ -15,19 +15,7 @@ $this->editForm->firstname->setLabel('Prenom')
                                       array( 'HtmlTag', array('tag' => 'p'))
                                    	  )
                              );
-
-$this->editForm->email->setLabel('Courriel')
-                         ->setAttrib('class' , 'formField')
-                         ->setDescription('Entrez votre nom')
-                         ->setDecorators(array(
-                                  'ViewHelper',
-                                  array( 'Label', array( 'class' => 'formLabel')),
-                                  // array('Description', array('class' => 'test')),
-                                  'Errors',
-                                  array( 'HtmlTag', array('tag' => 'p'))
-                                  )
-                         );
-                         
+                             
 $this->editForm->lastname->setLabel('Nom')
                          ->setAttrib('class' , 'formField')
                          ->setDescription('Entrez votre nom')
@@ -39,31 +27,21 @@ $this->editForm->lastname->setLabel('Nom')
                                   array( 'HtmlTag', array('tag' => 'p'))
                                   )
                          );
-
-$this->editForm->login->setLabel('Nom d\'utilisateur')
-                         ->setAttrib('class' , 'formField')
-                         ->setDescription('Entrez votre nom')
-                         ->setDecorators(array(
-                                  'ViewHelper',
-                                  array( 'Label', array( 'class' => 'formLabel')),
-                                  // array('Description', array('class' => 'test')),
-                                  'Errors',
-                                  array( 'HtmlTag', array('tag' => 'p'))
-                                  )
-                         );
-
-$this->editForm->password->setLabel('Mot de passe')
-                         ->setAttrib('class' , 'formField')
-                         ->setDescription('Entrez votre nom')
-                         ->setDecorators(array(
-                                  'ViewHelper',
-                                  array( 'Label', array( 'class' => 'formLabel')),
-                                  // array('Description', array('class' => 'test')),
-                                  'Errors',
-                                  array( 'HtmlTag', array('tag' => 'p'))
-                                  )
-                         );
                          
+$this->editForm->email->setLabel('Courriel')
+                         ->setAttrib('class' , 'formField')
+                         ->setDescription('Entrez votre nom')
+                         ->setDecorators(array(
+                                  'ViewHelper',
+                                  array( 'Label', array( 'class' => 'formLabel')),
+                                  // array('Description', array('class' => 'test')),
+                                  'Errors',
+                                  array( 'HtmlTag', array('tag' => 'p'))
+                                  )
+                         );
+
+
+                      
 $this->editForm->submit->setLabel('Modifier')
                                        ->setAttrib('class' , 'formBtn')
                                         ->setDecorators(array(

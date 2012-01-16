@@ -56,7 +56,8 @@ class User_Service_Staffmembre
       */
      public function delete(User_Model_Staffmembre $user)
      {
-         // TODO - Implement
+         $userMapper = new User_Model_Mapper_Staffmembre();
+         $userMapper->delete($user);
          return true;
      }
      
@@ -68,9 +69,15 @@ class User_Service_Staffmembre
       */
      public function save(User_Model_Staffmembre $user)
      {
-     	//print_r($user); exit;
-		$userMapper = new User_Model_Mapper_Staffmembre();
-		return $userMapper->save($user);
+
+         try {
+                  $userMapper = new User_Model_Mapper_Staffmembre();
+                  $userMapper->save($user);
+                  return self::STAFF_MEMBER_CREATED;
+         } catch (Exception $e) {
+                  return self::STAFF_MEMBER_CREATION_FAILED;
+         }
+
      }
      
      /**
@@ -144,7 +151,7 @@ class User_Service_Staffmembre
      {
          return Zend_Auth::getInstance()->hasIdentity();
      }
-     
+      
      public function getTeamList()
      {
          $teamMapper = new User_Model_Mapper_Team();

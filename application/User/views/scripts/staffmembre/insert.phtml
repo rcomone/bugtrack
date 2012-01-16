@@ -13,7 +13,7 @@ $this->saveForm->firstname->setLabel('Prenom')
                                       // array('Description', array('class' => 'test')),
                                       'Errors',
                                       array( 'HtmlTag', array('tag' => 'p'))
-                                   	  )
+                                    )
                              );
 
 $this->saveForm->email->setLabel('Courriel')
@@ -52,17 +52,6 @@ $this->saveForm->login->setLabel('Nom d\'utilisateur')
                                   )
                          );
 
-$this->saveForm->password->setLabel('Mot de passe')
-                         ->setAttrib('class' , 'formField')
-                         ->setDescription('Entrez votre nom')
-                         ->setDecorators(array(
-                                  'ViewHelper',
-                                  array( 'Label', array( 'class' => 'formLabel')),
-                                  // array('Description', array('class' => 'test')),
-                                  'Errors',
-                                  array( 'HtmlTag', array('tag' => 'p'))
-                                  )
-                         );
                          
 $this->saveForm->submit->setLabel('Inserer')
                                        ->setAttrib('class' , 'formBtn')
