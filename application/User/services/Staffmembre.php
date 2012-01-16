@@ -56,9 +56,11 @@ class User_Service_Staffmembre
       */
      public function delete(User_Model_Staffmembre $user)
      {
-         // TODO - Implement
+         $userMapper = new User_Model_Mapper_Staffmembre();
+         $userMapper->delete($user);
          return true;
      }
+     
      
      /**
       * Saves a user  entry at storage layer level (insert or update)
@@ -68,7 +70,7 @@ class User_Service_Staffmembre
       */
      public function save(User_Model_Staffmembre $user)
      {
-
+		
          try {
                   $userMapper = new User_Model_Mapper_Staffmembre();
                   $userMapper->save($user);

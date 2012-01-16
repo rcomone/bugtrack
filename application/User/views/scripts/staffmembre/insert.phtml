@@ -64,6 +64,18 @@ $this->saveForm->password->setLabel('Mot de passe')
                                   )
                          );
                          
+$this->saveForm->team->setLabel('Equipe')
+                         ->setAttrib('class' , 'formField')
+                         ->setDescription('Equipe')
+                         ->setDecorators(array(
+                                  'ViewHelper',
+                                  array( 'Label', array( 'class' => 'formLabel')),
+                                  // array('Description', array('class' => 'test')),
+                                  'Errors',
+                                  array( 'HtmlTag', array('tag' => 'p'))
+                                  )
+                         );
+                         
 $this->saveForm->submit->setLabel('Inserer')
                                        ->setAttrib('class' , 'formBtn')
                                         ->setDecorators(array(

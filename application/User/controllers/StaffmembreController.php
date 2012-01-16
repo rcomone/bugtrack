@@ -51,7 +51,7 @@ class User_StaffmembreController extends Zend_Controller_Action
      
     public function insertAction(){
 		$form = new User_Form_Save();
-
+		
 			if ($this->getRequest()->isPost()) {
 				if ($form->isValid($_POST)) {
 					$this->userService = new User_Service_Staffmembre();
@@ -62,11 +62,13 @@ class User_StaffmembreController extends Zend_Controller_Action
 					$user->setEmail($form->getValue('email'));
 					$user->setLogin($form->getValue('login'));
 					$user->setPassword($form->getValue('password'));
-										
+					$user->setTeam($form->getValue('team'));
+					
 					$this->userService->save($user);
+					$this->_redirector->gotoUrl('/user/list');
 				}
 			}
-			 
+		
 		$this->view->saveForm = $form;
     }
     
@@ -79,7 +81,7 @@ class User_StaffmembreController extends Zend_Controller_Action
         
         $userService = new User_Service_Staffmembre();
         $user = $userService->find($userId);
-		
+		//print_r($user);exit;
         if ($this->getRequest()->isPost()) {
 
             $updatedUser = clone $user;
@@ -88,7 +90,8 @@ class User_StaffmembreController extends Zend_Controller_Action
                                  ->setEmail($this->getRequest()->getParam('email'))
                                  ->setLogin($this->getRequest()->getParam('login'))
                                  ->setPassword($this->getRequest()->getParam('password'))
-                                 ->setId($this->getRequest()->getParam('id'));     
+                                 ->setId($this->getRequest()->getParam('id'))
+                                 ->setTeam($this->getRequest()->getParam('team'));   
             //print_r($this->getRequest()->getParam('id'));   exit;                   
             //print_r($updatedUser); exit;
             $userService->save($updatedUser);
@@ -101,6 +104,21 @@ class User_StaffmembreController extends Zend_Controller_Action
         }
     }
 
+	public function deleteAction()
+    {
+		
+    	$userId = (int) $this->getRequest()->getParam('id');
+        if (NULL===$userId) {
+            throw new Zend_Controller_Exception('No user');
+        }
+        
+        $userService = new User_Service_Staffmembre();
+        $user = $userService->find($userId);
+        
+        $userService->delete($user);
+		$this->_redirector->gotoUrl('/user/list');
+    }
+    
 	public function teamlistAction()
     {
         $service = new User_Service_Staffmembre();

@@ -63,6 +63,18 @@ $this->editForm->password->setLabel('Mot de passe')
                                   array( 'HtmlTag', array('tag' => 'p'))
                                   )
                          );
+
+$this->editForm->team->setLabel('Equipe')
+                         ->setAttrib('class' , 'formField')
+                         ->setDescription('Equipe')
+                         ->setDecorators(array(
+                                  'ViewHelper',
+                                  array( 'Label', array( 'class' => 'formLabel')),
+                                  // array('Description', array('class' => 'test')),
+                                  'Errors',
+                                  array( 'HtmlTag', array('tag' => 'p'))
+                                  )
+                         );
                          
 $this->editForm->submit->setLabel('Modifier')
                                        ->setAttrib('class' , 'formBtn')
