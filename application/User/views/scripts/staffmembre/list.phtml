@@ -1,6 +1,12 @@
 <table>
 <tr>
-	<th colspan=7>lol</th>
+	<th>Utilisateur</th>
+	<th>Prenom</th>
+	<th>Nom</th>
+	<th>eMail</th>
+	<th>Equipe</th>
+	<th>Modifier</th>
+	<th>Supprimer</th>
 </tr>
 <?php  foreach ($this->staffmembres as $staffmembre) : ?>
   <tr>
@@ -8,11 +14,7 @@
       <td><?php echo $staffmembre->getFirstname() ?></td>
       <td><?php echo $staffmembre->getLastname() ?></td>
       <td><?php echo $staffmembre->getEmail() ?></td>
-      <td><?php        
-      if( $staffmembre->getTeam() instanceof User_Model_Team) {
-      	echo $staffmembre->getTeam()->getName() ;
-      }
-      ?></td>
+      <td><?php echo $staffmembre->getTeam() ?></td>
       <td><a href="<?php echo $this->url(array('id' => $staffmembre->getId() ), 'UserEdit') ?>" title="Modifier l'Utilisateur"><img src="../img/modif.png"/></a></td>
       <td><a href="<?php echo $this->url(array('id' => $staffmembre->getId() ), 'UserDelete') ?>" title="Supprimer l'Utilisateur"><img src="../img/error.png"/></a></td>
   </tr>

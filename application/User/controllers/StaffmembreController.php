@@ -81,7 +81,7 @@ class User_StaffmembreController extends Zend_Controller_Action
         
         $userService = new User_Service_Staffmembre();
         $user = $userService->find($userId);
-		
+		//print_r($user);exit;
         if ($this->getRequest()->isPost()) {
 
             $updatedUser = clone $user;
@@ -90,7 +90,8 @@ class User_StaffmembreController extends Zend_Controller_Action
                                  ->setEmail($this->getRequest()->getParam('email'))
                                  ->setLogin($this->getRequest()->getParam('login'))
                                  ->setPassword($this->getRequest()->getParam('password'))
-                                 ->setId($this->getRequest()->getParam('id'));     
+                                 ->setId($this->getRequest()->getParam('id'))
+                                 ->setTeam($this->getRequest()->getParam('team'));   
             //print_r($this->getRequest()->getParam('id'));   exit;                   
             //print_r($updatedUser); exit;
             $userService->save($updatedUser);
