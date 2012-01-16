@@ -1,4 +1,7 @@
 <table>
+<tr>
+	<th colspan=7>lol</th>
+</tr>
 <?php  foreach ($this->staffmembres as $staffmembre) : ?>
   <tr>
       <td><?php echo $staffmembre->getLogin() ?></td>
@@ -11,7 +14,7 @@
       }
       ?></td>
       <td><a href="<?php echo $this->url(array('id' => $staffmembre->getId() ), 'UserEdit') ?>" title="Modifier l'Utilisateur"><img src="../img/modif.png"/></a></td>
-      <td><a href="#" title="Supprimer l'Utilisateur"><img src="../img/error.png"/></a></td>
+      <td><a href="<?php echo $this->url(array('id' => $staffmembre->getId() ), 'UserDelete') ?>" title="Supprimer l'Utilisateur"><img src="../img/error.png"/></a></td>
   </tr>
 <?php endforeach;?>
 </table>
