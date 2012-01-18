@@ -14,7 +14,7 @@
  * 
  * @category       Bugtrack
  * @package        Project
- * @subpackage  Service
+ * @subpackage     Service
  * @desc           Project service layer
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
@@ -25,7 +25,7 @@
 /**
  * @category       Bugtrack
  * @package        Project
- * @subpackage  Service
+ * @subpackage     Service
  * @desc           Project service layer
  * @author         Dev1 Lyon <devlyon1@cleo-consulting.fr>
  * @copyright      DEV LYON
@@ -35,22 +35,18 @@
  */
 class Project_Service_Project
 {
-     const PROJECT_UPDATED = 'staffMemberUpdated';
-     const PROJECT_UPDATE_FAILED = 'staffMemberUpdateFailed';
-     const PROJECT_CREATED = 'staffMemberCreated';
-     const PROJECT_CREATION_FAILED = 'staffMemberCreationFailed';
+     const PROJECT_UPDATED = 'projectUpdated';
+     const PROJECT_UPDATE_FAILED = 'projectUpdateFailed';
+     const PROJECT_CREATED = 'projectCreated';
+     const PROJECT_CREATION_FAILED = 'projectCreationFailed';
      /**
       * Retrieves all projects entries at storage layer level
       * @return multitype:Project_Model_Project
       */
      public function getList()
      {
-          // TODO - Implement
-         return array(
-             new Project_Model_Project(),
-             new Project_Model_Project(),
-             new Project_Model_Project()
-         );
+          $projectMapper = new Project_Model_Mapper_Project();
+          return $projectMapper->getList();
      }
      
      /**
@@ -60,37 +56,34 @@ class Project_Service_Project
       */
      public function delete(Project_Model_Project $project)
      {
-         // TODO - Implement
-         return true;
+         $projectDelete = new Project_Model_Mapper_Project();
+         return $projectDelete->delete($project);
      }
      
      /**
       * Saves a project  entry at storage layer level (insert or update)
       * @param  Project_Model_Project $project
       * @throws Exception if update process failed
-      * @return  Project_Model_Project $project
+      * @return mixed const
       */
      public function save(Project_Model_Project $project)
      {
-          // TODO - Implement
-          if ((int) $project->getId() !== 0 ) {
-              try {
-                  // update
-                  return self::PROJECT_UPDATED;
-              } catch (Exception $e) {
-                  return self::PROJECT_UPDATE_FAILED;
-              }
-              
-          } else {
-              try {
-                  // insert
-                  return self::PROJECT_CREATED;
-              } catch (Exception $e) {
-                  return self::PROJECT_CREATION_FAILED;
-              }
-          }
-
-
+        $projectMapper = new Project_Model_Mapper_Project();
+        if ((int)$project->getId() !== 0){
+            try {
+                $projectMapper->update($project);
+                return self::PROJECT_UPDATED;
+            } catch (Exception $e) {
+                return self::PROJECT_UPDATE_FAILED;
+            }
+        } else {
+            try {
+                $projectMapper->insert($project);
+                return self::PROJECT_CREATED;
+            } catch (Exception $e) {
+                return self::PROJECT_CREATED_FAILED;
+            }
+        }
      }
      
      /**
@@ -100,13 +93,13 @@ class Project_Service_Project
       */
      public function find($projectId)
      {
-          // TODO - Implement
+          $projectFind = new Project_Model_Mapper_Project();
+          
           if ((int) $projectId !== 0) {
-             $project = new Project_Model_Project();
+             $project = $projectFind->find((int) $projectId);
              return $project;
           } else {
               return false;
           }
      }
-        
 }

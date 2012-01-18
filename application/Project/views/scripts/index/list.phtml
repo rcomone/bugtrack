@@ -1,2 +1,29 @@
-<?php  
-var_dump($this->projects);
+<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#example').dataTable();
+			} );
+</script>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Description</th>
+			<th>Statut</th>
+			<th>Url Home</th>
+			<th>Url Doc</th>
+			<th>Ouvert par</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php  foreach ($this->projects as $project) : ?>
+  <tr>
+      <td><?php echo $project->getName() ?></td>
+      <td><?php echo $project->getDescription() ?></td>
+      <td><?php echo $project->getStatus() ?></td>
+      <td><?php echo $project->getHomepageUrl() ?></td>
+      <td><?php echo $project->getDocUrl() ?></td>
+      <td><?php echo $project->getUser()->getLogin() ?></td>
+  </tr>
+<?php endforeach;?>
+	</tbody>
+</table>

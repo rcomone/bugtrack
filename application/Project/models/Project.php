@@ -52,6 +52,16 @@ class Project_Model_Project
      */
     private $_description;
     /**
+     * Project's status
+     * @var string
+     */
+    private $_status;
+    /**
+     * Project's date creation
+     * @var int epoch
+     */
+    private $_date;
+    /**
      * Project's homepage URL
      * @var string
      */
@@ -61,24 +71,60 @@ class Project_Model_Project
      * @var string
      */
     private $_docUrl;
-	/**
+    /**
+     * Project's 
+     * @var User_Model_Staffmembre
+     */
+    private $_user;
+    /**
      * @return the $_id
+<<<<<<< HEAD
      */
     public function getId ()
     {
         return $this->_id;
     }
+=======
+     */
+    public function getId() {
+        return $this->_id;
+    }
+>>>>>>> origin/project
 
-	/**
+    /**
+     * @param integer $_id
+     */
+    public function setId($_id) {
+        $this->_id = $_id;
+        return $this;
+    }
+
+    /**
      * @return the $_name
+<<<<<<< HEAD
      */
     public function getName ()
     {
         return $this->_name;
     }
+=======
+     */
+    public function getName() {
+        return $this->_name;
+    }
+>>>>>>> origin/project
 
-	/**
+    /**
+     * @param string $_name
+     */
+    public function setName($_name) {
+        $this->_name = $_name;
+        return $this;
+    }
+
+    /**
      * @return the $_description
+<<<<<<< HEAD
      */
     public function getDescription ()
     {
@@ -127,24 +173,105 @@ class Project_Model_Project
         $this->_description = $_description;
         return $this;
     }
+=======
+     */
+    public function getDescription() {
+        return $this->_description;
+    }
 
-	/**
+    /**
+     * @param string $_description
+     */
+    public function setDescription($_description) {
+        $this->_description = $_description;
+        return $this;
+    }
+
+    /**
+     * @return the $_status
+     */
+    public function getStatus() {
+        return $this->_status;
+    }
+
+    /**
+     * @param string $_status
+     */
+    public function setStatus($_status) {
+        $this->_status = $_status;
+        return $this;
+    }
+
+    /**
+     * @return the $_date
+     */
+    public function getDate() {
+        return $this->_date;
+    }
+
+    /**
+     * @param int $_date
+     */
+    public function setDate($_date) {
+        $this->_date = $_date;
+        return $this;
+    }
+>>>>>>> origin/project
+
+    /**
+     * @return the $_homepageUrl
+     */
+    public function getHomepageUrl() {
+        return $this->_homepageUrl;
+    }
+
+    /**
      * @param string $_homepageUrl
+<<<<<<< HEAD
      */
     public function setHomepageUrl ($_homepageUrl)
     {
+=======
+     */
+    public function setHomepageUrl($_homepageUrl) {
+>>>>>>> origin/project
         $this->_homepageUrl = $_homepageUrl;
         return $this;
     }
 
-	/**
+    /**
+     * @return the $_docUrl
+     */
+    public function getDocUrl() {
+        return $this->_docUrl;
+    }
+
+    /**
      * @param string $_docUrl
+<<<<<<< HEAD
      */
     public function setDocUrl ($_docUrl)
     {
+=======
+     */
+    public function setDocUrl($_docUrl) {
+>>>>>>> origin/project
         $this->_docUrl = $_docUrl;
         return $this;
     }
 
+    /**
+     * @return the $_user
+     */
+    public function getUser() {
+        return $this->_user;
+    }
 
+    /**
+     * @param User_Model_Staffmembre $_user
+     */
+    public function setUser(User_Model_Staffmembre $_user) {
+        $this->_user = $_user;
+        return $this;
+    }
 }

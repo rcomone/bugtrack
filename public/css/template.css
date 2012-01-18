@@ -1,4 +1,9 @@
-<<<<<<< HEAD
+
+.breadcrumbs {
+	margin-bottom:20px;
+}
+
+
 .center {
 	text-align:center;
 }
@@ -186,6 +191,7 @@ label {
 	font-size:17px;
 	margin:0 0 5px;
 	position:relative;
+	width:120px;
 }
 
 small {
@@ -224,7 +230,7 @@ input[type="submit"], input[type="reset"] {
 	display:inline-block;
 	margin:0 2px;
 	padding:2px 6px;
-=======
+}
 .center {
 	text-align:center;
 }
@@ -445,5 +451,4 @@ input[type="submit"], input[type="reset"] {
 	display:inline-block;
 	margin:0 2px;
 	padding:2px 6px;
->>>>>>> f942e00632ccf819dda67ddb084bfa6c0577c4cd
 }

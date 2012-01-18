@@ -5,6 +5,29 @@
     
 */
 
+
+/* Icon font
+   --------- */
+
+@font-face {
+	font-family:'RaphaelIcons';
+    src: url('../font/raphaelicons-webfont.eot');
+    src: url('../font/raphaelicons-webfont.woff') format('woff'), url('../font/raphaelicons-webfont.ttf') format('truetype'), url('../font/raphaelicons-webfont.svg#webfontjJTHv0E8') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    font-family: 'RaphaelIcons';
+    font-size: 1.1em;
+    position: relative;
+    top: 0.1em;
+}
+
+
 /*  Typography presets
     ------------------  */
 
@@ -13,6 +36,7 @@
     line-height: 120px;
     letter-spacing: -2px;
 }
+
 
 .huge, h1 {
     font-size: 68px;
@@ -38,6 +62,7 @@
 body {
     font: 11px/16px Verdana, Arial, Helvetica, “Trebuchet MS”, Tahoma, Geneva, “Lucida Sans Unicode”, “Lucida Grande”, “MS Sans Serif”, sans-serif;
 }
+
 
 .small, small {
     font-size: 13px;

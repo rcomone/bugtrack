@@ -1,12 +1,19 @@
 <?php echo $this->doctype() . PHP_EOL; ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 <?php echo $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf8'); ?>
 <?php echo $this->navigation()->links(Zend_Registry::get('navigation')).PHP_EOL; ?>
 <?php $this->headLink()->appendStylesheet('/css/960.css','all'); ?>
 <?php $this->headLink()->appendStylesheet('/css/template.css','all'); ?>
 <?php $this->headLink()->appendStylesheet('/css/colour.css','all'); ?>
+<?php $this->headLink()->appendStylesheet('/css/fonts.css','all'); ?>
+<?php $this->headLink()->appendStylesheet('/css/demo_page.css','all'); ?>
+<?php $this->headLink()->appendStylesheet('/css/demo_table.css','all'); ?>
+<?php $this->headScript()->appendFile('/js/jquery-1.7.1.min.js', 'text/javascript');?>
+<?php $this->headScript()->appendFile('/js/jquery.dataTables.min.js', 'text/javascript');?>
 <?php echo $this->headLink();?>
+<?php echo $this->headScript();?>
 </head>
 <body>
 
