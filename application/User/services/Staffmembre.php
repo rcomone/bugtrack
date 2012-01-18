@@ -35,6 +35,7 @@
  */
 class User_Service_Staffmembre
 {
+     private $userMapper = null;
      const STAFF_MEMBER_UPDATED = 'staffMemberUpdated';
      const STAFF_MEMBER_UPDATE_FAILED = 'staffMemberUpdateFailed';
      const STAFF_MEMBER_CREATED = 'staffMemberCreated';
@@ -117,8 +118,7 @@ class User_Service_Staffmembre
       */
      public function findByLogin($login)
      {
-          $userMapper = new User_Model_Mapper_Staffmembre();
-          return $userMapper->findByLogin($login);
+          return $this->getUserMapper ()->findByLogin($login);
      }
      
      /**
@@ -128,8 +128,7 @@ class User_Service_Staffmembre
       */
      public function find($id)
      {
-          $userMapper = new User_Model_Mapper_Staffmembre();
-          return $userMapper->find($id);
+          return $this->getUserMapper ()->find($id);
      }
      
      /**
@@ -158,4 +157,15 @@ class User_Service_Staffmembre
          $teamMapper = new User_Model_Mapper_Team();
          return $teamMapper->getList();
      }
+	/**
+     * @return the $userMapper
+     */
+    public function getUserMapper ()
+    {
+        if(is_null($this->userMapper)) {
+            $this->userMapper = new User_Model_Mapper_Staffmembre;
+        }
+        return $this->userMapper;
+    }
+
 }

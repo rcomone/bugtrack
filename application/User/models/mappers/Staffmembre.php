@@ -49,9 +49,15 @@ class User_Model_Mapper_Staffmembre
         return $this->_dbTable;
     }
     
+    public function setDbTable($dbTable)
+    {
+         $this->_dbTable = $dbTable;
+         return $this;
+    }
+    
     public function find($id)
     {
-        
+
            $rowSet = $this->getDbTable()->find((int) $id);  
            if ( !$rowSet->current()) {
                return false;
@@ -133,7 +139,7 @@ class User_Model_Mapper_Staffmembre
     }
     
     
-    private function _rowToObject(Zend_Db_Table_Row $row)
+    private function _rowToObject(Zend_Db_Table_Row_Abstract $row)
     {
            $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');  
                    

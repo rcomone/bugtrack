@@ -1,86 +1,50 @@
 <?php 
 
-class User_Service_StaffmemberTest extends PHPUnit_Framework_TestCase
+class User_Service_StaffmemberTest extends Ip_Test_TestCase
 {
+    public function testDependencyInjection()
+    {
+        // Instancie le service et accède au mapper
+        $userService = new User_Service_Staffmembre();
+        $userMapper = $userService->getUserMapper();
+        
+        // Créée les mocks pour DbTable DbAdapter et Rowset
+        $dbTable = $this->_getCleanMock('Zend_Db_Table_Abstract');
+        $dbAdapter = $this->_getCleanMock('Zend_Db_Adapter_Abstract');
+        $rowset = $this->_getCleanMock('Zend_Db_Table_Rowset_Abstract');
+        $row = $this->_getCleanMock('Zend_Db_Table_Row_Abstract');
+        
+        // Indique que la méthode getAdapter du DbTable renvoie un mock de DbAdapter
+        $dbTable->expects($this->any())
+                      ->method('getAdapter')
+                      ->will($this->returnValue($dbAdapter));
 
-    
-    public function testGetlistMethodShouldReturnArrayOfUserObjects()
-    {
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->getList();
-        $this->assertInternalType('array', $result);
-        if (is_array($result)) {
-            $isUserObject = true;
-            foreach ($result as $user) {
-                if (!($user instanceof User_Model_Staffmembre)) {
-                        $isUserObject = false;
-                }
-            }
-            $this->assertTrue($isUserObject);
-        }
+        // peuple le mock Row
+        $row->usm_id = 1;
+        $row->usm_firstname = 'mock';
+        $row->usm_lastname = 'Mock';
+        $row->usm_email = 'mock@test.com';
+        $row->usm_login = 'mock';
+        $row->password = 'mockmd5';
+        $row->ut_id = 1;
+        
+        
+        // Indique que la méthode current du Rowset renvoie un row
+        $rowset->expects($this->any())
+                      ->method('current')
+                      ->will($this->returnValue($row));
+
+        // Indique que la méthode find du DbTable renvoie un mock de Rowset
+        $dbTable->expects($this->any())
+                      ->method('find')
+                      ->will($this->returnValue($rowset));
+
+        // Injecte le mock DbTable dans le mapper
+        $userMapper->setDbTable($dbTable);
+        
+        // Appelle la méthode à tester
+        $result = $userService->find(1);
+
     }
     
-    public function testDeleteMethodShouldReturnTrue()
-    {
-        $user = new User_Model_Staffmembre();
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->delete($user);
-        $this->assertTrue($result);
-    }
-    
-    public function testSaveMethodWithNewUserGivenShouldReturnSuccessConstant() 
-    {
-        $user = new User_Model_Staffmembre();
-        $user->setLogin('test')
-                ->setFirstname('test test');
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->save($user);
-        $this->assertEquals ($userService::STAFF_MEMBER_CREATED, $result);
-    }
-    
-    public function testSaveMethodWithExistingUserGivenShouldReturnSuccessConstant() 
-    {
-        $user = new User_Model_Staffmembre();
-        $user->setId(1)
-                ->setLogin('test')
-                ->setFirstname('test test');
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->save($user);
-        $this->assertEquals ($userService::STAFF_MEMBER_UPDATED, $result);
-    }
-    
-    public function testAuthenticateMethodWithRightCredentialsGivenShouldReturnTrue()
-    {
-        $user = new User_Model_Staffmembre();
-        $user->setLogin('test')
-                ->setPassword('testtest');
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->authenticate($user);
-        $this->assertTrue($result);
-    }
-    
-    public function testAuthenticateMethodWithWrongCredentialsGivenShouldReturnFalse()
-    {
-        $user = new User_Model_Staffmembre();
-        $user->setLogin('testsdf')
-                ->setPassword('testsdf');
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->authenticate($user);
-        $this->assertFalse($result);
-    }
-    
-    public function testFindByLoginWithExistingLoginGivenShouldReturnUserObject()
-    {
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->findByLogin('test');
-        $user = new User_Model_Staffmembre();
-        $this->assertInstanceOf('User_Model_Staffmembre', $user);
-    }
-    
-    public function testFindByLoginWithNonExistingLoginGivenShouldReturnFalse()
-    {
-        $userService = new User_Service_Staffmembre();
-        $result = $userService->findByLogin('testqsdfq');
-        $this->assertFalse($result);
-    }
 }

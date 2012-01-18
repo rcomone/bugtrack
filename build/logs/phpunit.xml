@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="bugtrack" tests="14" assertions="21" failures="0" errors="0" time="0.012005">
-    <testsuite name="User_Model_StaffmemberTest" file="/home/www/bugtrack/tests/application/Project/models/StaffmembreTest.php" fullPackage="User.Model" tests="1" assertions="6" failures="0" errors="0" time="0.002699">
-      <testcase name="testGettersAndSettersAreWorkingFine" class="User_Model_StaffmemberTest" file="/home/www/bugtrack/tests/application/Project/models/StaffmembreTest.php" line="6" assertions="6" time="0.002699"/>
+  <testsuite name="bugtrack" tests="4" assertions="5" failures="0" errors="0" time="0.024028">
+    <testsuite name="Project_Model_Test" file="/home/www/bugtrack/tests/application/Project/models/ProjectTest.php" fullPackage="Project.Model" tests="1" assertions="1" failures="0" errors="0" time="0.002408">
+      <testcase name="testImplementation" class="Project_Model_Test" file="/home/www/bugtrack/tests/application/Project/models/ProjectTest.php" line="5" assertions="1" time="0.002408"/>
     </testsuite>
-    <testsuite name="Project_Service_ProjectTest" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" fullPackage="Project.Service" tests="5" assertions="6" failures="0" errors="0" time="0.004582">
-      <testcase name="testGetlistMethodShouldReturnArrayOfProjectObjects" class="Project_Service_ProjectTest" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" line="7" assertions="2" time="0.001011"/>
-      <testcase name="testDeleteMethodShouldReturnTrue" class="Project_Service_ProjectTest" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" line="23" assertions="1" time="0.000542"/>
-      <testcase name="testSaveMethodWithNewProjectGivenShouldReturnSuccessConstant" class="Project_Service_ProjectTest" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" line="31" assertions="1" time="0.001093"/>
-      <testcase name="testSaveMethodWithExistingProjectGivenShouldReturnSuccessConstant" class="Project_Service_ProjectTest" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" line="41" assertions="1" time="0.000639"/>
-      <testcase name="testFindByLoginWithExistingLoginGivenShouldReturnUserObject" class="Project_Service_ProjectTest" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" line="52" assertions="1" time="0.001297"/>
+    <testsuite name="Project_Service_Test" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" fullPackage="Project.Service" tests="1" assertions="1" failures="0" errors="0" time="0.000821">
+      <testcase name="testImplementation" class="Project_Service_Test" file="/home/www/bugtrack/tests/application/Project/services/ProjectTest.php" line="5" assertions="1" time="0.000821"/>
     </testsuite>
-    <testsuite name="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" fullPackage="User.Service" tests="8" assertions="9" failures="0" errors="0" time="0.004724">
-      <testcase name="testGetlistMethodShouldReturnArrayOfUserObjects" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="7" assertions="2" time="0.000619"/>
-      <testcase name="testDeleteMethodShouldReturnTrue" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="23" assertions="1" time="0.000530"/>
-      <testcase name="testSaveMethodWithNewUserGivenShouldReturnSuccessConstant" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="31" assertions="1" time="0.000553"/>
-      <testcase name="testSaveMethodWithExistingUserGivenShouldReturnSuccessConstant" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="41" assertions="1" time="0.000542"/>
-      <testcase name="testAuthenticateMethodWithRightCredentialsGivenShouldReturnTrue" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="52" assertions="1" time="0.000528"/>
-      <testcase name="testAuthenticateMethodWithWrongCredentialsGivenShouldReturnFalse" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="62" assertions="1" time="0.000640"/>
-      <testcase name="testFindByLoginWithExistingLoginGivenShouldReturnUserObject" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="72" assertions="1" time="0.000785"/>
-      <testcase name="testFindByLoginWithNonExistingLoginGivenShouldReturnFalse" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="81" assertions="1" time="0.000527"/>
+    <testsuite name="User_Model_Test" file="/home/www/bugtrack/tests/application/User/models/UserTest.php" fullPackage="User.Model" tests="1" assertions="1" failures="0" errors="0" time="0.000773">
+      <testcase name="testImplementation" class="User_Model_Test" file="/home/www/bugtrack/tests/application/User/models/UserTest.php" line="5" assertions="1" time="0.000773"/>
+    </testsuite>
+    <testsuite name="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" fullPackage="User.Service" tests="1" assertions="2" failures="0" errors="0" time="0.020026">
+      <testcase name="testDependencyInjection" class="User_Service_StaffmemberTest" file="/home/www/bugtrack/tests/application/User/services/UserTest.php" line="5" assertions="2" time="0.020026"/>
     </testsuite>
   </testsuite>
 </testsuites>
