@@ -21,10 +21,17 @@ class User_Form_Save extends Zend_Form
         $loginField->addValidator(new Zend_Validate_Alnum());
         $loginField->setRequired(true);
         
-        $teamField = new Zend_Form_Element_Text('team');
-        $teamField->addValidator(new Zend_Validate_Alnum());
-        $teamField->setRequired(true);
+        $teamMapper = new User_Model_Mapper_Team();
+        $teamArray = $teamMapper->getList();
         
+        foreach($teamArray as $rowTeam){
+        	$teams[$rowTeam->getId()] = $rowTeam->getName();
+        }
+
+        
+        $teamField = new Zend_Form_Element_Select('team');
+		$teamField->addMultiOptions($teams);
+                    
         $idField = new Zend_Form_Element_Hidden('id'); 
         
         $passwordField = new Zend_Form_Element_Password('password');

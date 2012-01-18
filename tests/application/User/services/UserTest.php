@@ -46,5 +46,29 @@ class User_Service_StaffmemberTest extends Ip_Test_TestCase
         $result = $userService->find(1);
 
     }
+<<<<<<< HEAD
     
+=======
+
+    protected function _getCleanMock($className)
+     {
+        $class = new ReflectionClass($className);
+        $methods = $class->getMethods();
+        $stubMethods = array();
+        foreach ($methods as $method) {
+            if ($method->isPublic() || ($method->isProtected()
+            && $method->isAbstract())) {
+                $stubMethods[] = $method->getName();
+            }
+        }
+        $mocked = $this->getMock(
+            $className,
+            $stubMethods,
+            array(),
+            $className . '_MapperTestMock_' . uniqid(),
+            false
+        );
+        return $mocked;
+    }
+>>>>>>> origin/user
 }

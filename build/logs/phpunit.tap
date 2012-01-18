@@ -1,6 +1,0 @@
-TAP version 13
-ok 1 - Project_Model_Test::testImplementation
-ok 2 - Project_Service_Test::testImplementation
-ok 3 - User_Model_Test::testImplementation
-ok 4 - User_Service_StaffmemberTest::testDependencyInjection
-1..4
