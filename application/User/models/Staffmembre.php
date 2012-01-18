@@ -202,6 +202,8 @@ class User_Model_Staffmembre
         $userRow['firstname'] = $this->getFirstname();
         $userRow['lastname'] = $this->getLastname();
         $userRow['email'] = $this->getEmail();
+        $userRow['login'] = $this->getLogin();
+        $userRow['team'] = $this->getTeam()->getId();
         return $userRow;
     }
     

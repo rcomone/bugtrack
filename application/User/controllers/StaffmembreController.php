@@ -81,7 +81,6 @@ class User_StaffmembreController extends Zend_Controller_Action
         
         $userService = new User_Service_Staffmembre();
         $user = $userService->find($userId);
-		//print_r($user);exit;
         if ($this->getRequest()->isPost()) {
 
             $updatedUser = clone $user;

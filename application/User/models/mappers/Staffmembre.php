@@ -142,9 +142,9 @@ class User_Model_Mapper_Staffmembre
     private function _rowToObject(Zend_Db_Table_Row_Abstract $row)
     {
            $teamRow = $row->findParentRow('User_Model_DbTable_Team', 'Team');  
-                   
+
            $team = new User_Model_Team();	
-           if( $teamRow instanceof User_Model_Team) {	           
+           if( count($teamRow) ) {	           
 	           $team->setId($teamRow->ut_id)
 	                     ->setName($teamRow->ut_name);
            }
