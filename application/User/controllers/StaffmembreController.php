@@ -98,7 +98,7 @@ class User_StaffmembreController extends Zend_Controller_Action
 			$this->_redirector->gotoUrl('/user/list');
         } else {
         	
-            $form = new User_Form_Save();            
+            $form = new User_Form_Save();   
             $form->populate($user->toArray());
             $this->view->editForm = $form;
         }

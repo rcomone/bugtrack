@@ -52,7 +52,13 @@ class User_Model_DbTable_Staffmembre extends Zend_Db_Table_Abstract
                 )
             )
         );
-        
         parent::__construct($options);
     }
+        
+    public function setAdapter($adapter) 
+    {
+            $this->_db = $adapter;
+            return $this;
+    }
+    
 }

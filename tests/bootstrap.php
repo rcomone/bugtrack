@@ -14,6 +14,7 @@ define('APPLICATION_ENV', 'testing');
 set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH),
     realpath(APPLICATION_PATH . '/../library'), 
+    realpath(APPLICATION_PATH . '/../tests/Mocks'),
     get_include_path()
     ))
 );

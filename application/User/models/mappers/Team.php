@@ -83,6 +83,7 @@ class User_Model_Mapper_Team
            }
            $row = $rowSet->current();
            $team = $this->_rowToObject($row); 
+
            return $team;
     }
     

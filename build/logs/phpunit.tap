@@ -1,0 +1,7 @@
+TAP version 13
+ok 1 - User_Model_StaffmemberTest::testGettersAndSettersAreWorkingFine
+not ok 2 - Failure: Project_Service_JalonTest::testGetlistMethodShouldReturnArrayOfJalonObjects
+  ---
+  message: 'Failed asserting that false is of type "array".'
+  severity: fail
+  ...
