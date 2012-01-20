@@ -78,18 +78,12 @@ class Project_Model_Project
     private $_user;
     /**
      * @return the $_id
-<<<<<<< HEAD
      */
     public function getId ()
     {
         return $this->_id;
     }
-=======
-     */
-    public function getId() {
-        return $this->_id;
-    }
->>>>>>> origin/project
+
 
     /**
      * @param integer $_id
@@ -101,18 +95,12 @@ class Project_Model_Project
 
     /**
      * @return the $_name
-<<<<<<< HEAD
      */
     public function getName ()
     {
         return $this->_name;
     }
-=======
-     */
-    public function getName() {
-        return $this->_name;
-    }
->>>>>>> origin/project
+
 
     /**
      * @param string $_name
@@ -122,59 +110,7 @@ class Project_Model_Project
         return $this;
     }
 
-    /**
-     * @return the $_description
-<<<<<<< HEAD
-     */
-    public function getDescription ()
-    {
-        return $this->_description;
-    }
-
-	/**
-     * @return the $_homepageUrl
-     */
-    public function getHomepageUrl ()
-    {
-        return $this->_homepageUrl;
-    }
-
-	/**
-     * @return the $_docUrl
-     */
-    public function getDocUrl ()
-    {
-        return $this->_docUrl;
-    }
-
-	/**
-     * @param integer $_id
-     */
-    public function setId ($_id)
-    {
-        $this->_id = (int) $_id;
-        return $this;
-    }
-
-	/**
-     * @param string $_name
-     */
-    public function setName ($_name)
-    {
-        $this->_name = $_name;
-        return $this;
-    }
-
-	/**
-     * @param string $_description
-     */
-    public function setDescription ($_description)
-    {
-        $this->_description = $_description;
-        return $this;
-    }
-=======
-     */
+ 
     public function getDescription() {
         return $this->_description;
     }
@@ -216,7 +152,7 @@ class Project_Model_Project
         $this->_date = $_date;
         return $this;
     }
->>>>>>> origin/project
+
 
     /**
      * @return the $_homepageUrl
@@ -227,14 +163,9 @@ class Project_Model_Project
 
     /**
      * @param string $_homepageUrl
-<<<<<<< HEAD
      */
     public function setHomepageUrl ($_homepageUrl)
     {
-=======
-     */
-    public function setHomepageUrl($_homepageUrl) {
->>>>>>> origin/project
         $this->_homepageUrl = $_homepageUrl;
         return $this;
     }
@@ -248,14 +179,9 @@ class Project_Model_Project
 
     /**
      * @param string $_docUrl
-<<<<<<< HEAD
      */
     public function setDocUrl ($_docUrl)
     {
-=======
-     */
-    public function setDocUrl($_docUrl) {
->>>>>>> origin/project
         $this->_docUrl = $_docUrl;
         return $this;
     }

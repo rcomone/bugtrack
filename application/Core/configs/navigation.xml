@@ -20,6 +20,11 @@
            <route>TeamList</route>     
        </TeamList>
        
+       <CreateLog>
+       		<label>View Log</label>
+       		<route>CreateLog</route>
+       </CreateLog>
+       
        <CreateList>
            <label>Create user</label>
            <route>CreateList</route>
@@ -31,6 +36,8 @@
            <route>UsersAuth</route>     
            <visible>0</visible>
        </UsersAuth>
+       
+       
        
    </main>
 </config>

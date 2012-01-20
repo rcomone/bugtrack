@@ -46,9 +46,6 @@ class User_Service_StaffmemberTest extends Ip_Test_TestCase
         $result = $userService->find(1);
 
     }
-<<<<<<< HEAD
-    
-=======
 
     protected function _getCleanMock($className)
      {
@@ -70,5 +67,4 @@ class User_Service_StaffmemberTest extends Ip_Test_TestCase
         );
         return $mocked;
     }
->>>>>>> origin/user
 }

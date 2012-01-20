@@ -1,0 +1,14 @@
+<div style="clear:both;"></div>
+<p>
+	
+Test de génération de log
+<?php 
+	
+require_once(LIBRARY_PATH . DS . 'Ip/Formatter/Formatter.php');
+require_once(LIBRARY_PATH . DS . 'Ip/Logger/Logger.php');
+
+	$logger = new Ip_Logger_File(new Ip_Formatter_String(), LOG_PATH . DS . 'mylog.txt');
+	$logger->write('ca marche ?');
+	
+	?>
+</p>
