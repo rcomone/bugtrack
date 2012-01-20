@@ -36,6 +36,10 @@ class IndexController extends Zend_Controller_Action
 {
     public function indexAction()
     {
-            
+    	//Génération du log
+        require_once (LIBRARY_PATH . DS . 'Ip/Formatter/Formatter.php');
+		require_once (LIBRARY_PATH . DS . 'Ip/Logger/Logger.php');
+		$logger = new Library_Ip_Formatter_Logger_Logger_File(new Library_Ip_Formatter_Formatter_String(), LOG_PATH . DS . 'logs_override.txt');
+		$logger->write('Je suis un message de log formatté en TXT');
     }
 }
